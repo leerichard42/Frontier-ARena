@@ -1,0 +1,45 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class PlayerManager : MonoBehaviour {
+	float forwardSpeed = 0.1f;
+	float strafeSpeed = 0.15f;
+	float runSpeed = 0.2f;
+	bool freeRunning = false;
+
+	// Use this for initialization
+	void Start () {
+		transform.LookAt (new Vector3(GameObject.Find ("Target").gameObject.transform.position.x,
+		                              transform.position.y,
+		                              GameObject.Find ("Target").gameObject.transform.position.z));
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (Input.GetButtonDown ("Run")) {
+			if (!freeRunning) {
+				freeRunning = true;
+			}
+		} else {
+			if(freeRunning){
+				freeRunning = false;
+			}
+		}
+		if (!freeRunning) { //Fighting
+			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+				transform.LookAt (new Vector3 (GameObject.Find ("Target").gameObject.transform.position.x,
+			                              transform.position.y,
+			                              GameObject.Find ("Target").gameObject.transform.position.z));
+				rigidbody.MovePosition (transform.position 
+					+ transform.right * Input.GetAxis ("Horizontal") * strafeSpeed
+					+ transform.forward * Input.GetAxis ("Vertical") * forwardSpeed);
+			}
+		}
+		else{
+			Vector3 camToPlayer = transform.position - GameObject.Find ("Main Camera").transform.position;
+			camToPlayer.y = 0;
+			Vector3 camToPlayerRight = Vector3.Cross(camToPlayer, transform.up);
+			rigidbody.MovePosition (transform.position + transform.forward * Input.GetAxis ("Vertical") * runSpeed);
+		}
+	}
+}
