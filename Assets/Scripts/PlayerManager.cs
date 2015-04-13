@@ -7,6 +7,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 	float runSpeed = 0.3f;
 	bool freeRunning = false;
 	GameObject camera;
+	public Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		transform.LookAt (new Vector3(GameObject.Find ("Target").gameObject.transform.position.x,
@@ -22,11 +24,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 				if (!freeRunning) {
 					freeRunning = true;
 				}
+				animator.SetBool("Walking", true);
 			} 
 			if(Input.GetButtonUp("Run")){
 				if(freeRunning){
 					freeRunning = false;
 				}
+				animator.SetBool("Walking", false);
 			}
 			float strafeInput = 0;
 			float forwardInput = 0;
