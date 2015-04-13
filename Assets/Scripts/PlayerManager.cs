@@ -12,7 +12,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 		transform.LookAt (new Vector3(GameObject.Find ("Target").gameObject.transform.position.x,
 		                              transform.position.y,
 		                              GameObject.Find ("Target").gameObject.transform.position.z));
-		camera = GameObject.Find ("Main Camera");
+		camera = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -74,3 +74,4 @@ public class PlayerManager : Photon.MonoBehaviour {
 		}
 	}
 }
+

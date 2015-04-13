@@ -1,0 +1,233 @@
+System:
+  OS: Windows 8.1  (6.3.9600) 64bit
+  CPU: Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz, count: 8
+  Physical RAM: 8140 MB
+  Addressable RAM: 2048 MB
+
+D3D9:
+  Renderer: Microsoft Basic Render Driver
+  VendorID: 1414
+  Driver: d3d10warp.dll 6.3.9600.17211
+  VRAM: 256 (via DXGI)
+
+OpenGL:
+  Version: 1.1.0
+  Vendor: Microsoft Corporation
+  Renderer: GDI Generic
+  VRAM: 256 (via DXGI)
+  Extensions: GL_WIN_swap_hint GL_EXT_bgra GL_EXT_paletted_texture
+
+User locale: en-US
+System locale: en-US
+
+Running processes:
+NvBackend.exe (6420)
+    path: C:\Program Files (x86)\NVIDIA Corporation\Update Core\NvBackend.exe
+    company:  NVIDIA Corporation
+    product:  NVIDIA GeForce Experience
+    filedesc: NVIDIA GeForce Experience Backend
+    filever:  16.18.9.0
+    prodver:  16.18.9.0
+AvastUI.exe (912)
+    path: C:\Program Files\AVAST Software\Avast\AvastUI.exe
+    company:  AVAST Software
+    product:  avast! Antivirus 
+    filedesc: avast! Antivirus
+    filever:  9.0.2021.531
+    prodver:  9.0.2021.531
+Dropbox.exe (5584)
+    path: C:\Users\Anthony\AppData\Roaming\Dropbox\bin\Dropbox.exe
+    company:  Dropbox, Inc.
+    product:  Dropbox
+    filedesc: Dropbox
+    filever:  3.4.3.0
+    prodver:  1.0.0.1
+jusched.exe (1788)
+    path: C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe
+    company:  Oracle Corporation
+    product:  Java(TM) Platform SE Auto Updater
+    filedesc: Java(TM) Update Scheduler
+    filever:  2.1.67.1
+    prodver:  2.1.67.1
+UA.exe (5792)
+    path: C:\Users\Anthony\AppData\Roaming\VERIZON\UA_ar\UA.exe
+    company:  SAMSUNG Electornics Co., Ltd.
+    product:  UA
+    filedesc: Verizon 2.0 UA for Android
+    filever:  1.0.0.1
+    prodver:  1.0.0.1
+Agent.exe (4468)
+    path: C:\ProgramData\Battle.net\Agent\Agent.3918\Agent.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net Update Agent
+    filedesc: Battle.net Update Agent
+    filever:  1.18.1.3918
+    prodver:  1.18.1.3918
+Battle.net.exe (2868)
+    path: C:\Program Files (x86)\Battle.net\Battle.net.5669\Battle.net.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net desktop app
+    filedesc: Battle.net desktop app
+    filever:  1.2.7.5669
+    prodver:  1.2.7.5669
+ssh-agent.exe (8000)
+    path: C:\Users\Anthony\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\ssh-agent.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+MonoDevelop.exe (1392)
+    path: C:\Program Files (x86)\Unity\MonoDevelop\bin\MonoDevelop.exe
+    company:  
+    product:  MonoDevelop
+    filedesc: MonoDevelop
+    filever:  2.6.0.0
+    prodver:  2.6.0.0
+chrome.exe (3504)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (7692)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (8160)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (1408)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+GitHub.exe (7896)
+    path: C:\Users\Anthony\AppData\Local\Apps\2.0\JNV66RTL.GZ0\PCGVE56Y.42A\gith..tion_317444273a93ac29_0002.000d_7c798cfff9a06ed4\GitHub.exe
+    company:  GitHub, Inc.
+    product:  GitHub for Windows
+    filedesc: GitHub
+    filever:  2.13.1.2
+    prodver:  2.13.1.2
+chrome.exe (6876)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+notepad++.exe (6880)
+    path: C:\Program Files (x86)\Notepad++\notepad++.exe
+    company:  Don HO don.h@free.fr
+    product:  Notepad++
+    filedesc: Notepad++ : a free (GNU) source code editor
+    filever:  6.7.5.0
+    prodver:  6.7.5.0
+chrome.exe (6524)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (776)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (7048)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (7876)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (4400)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (4080)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (8424)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (2512)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (6984)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (8100)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+chrome.exe (8492)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+adb.exe (8356)
+    path: C:\Android\android-sdk\platform-tools\adb.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+chrome.exe (5552)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  41.0.2272.118
+    prodver:  41.0.2272.118
+UnityBugReporter.exe (4160)
+    path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
+    company:  Unity Technologies ApS
+    product:  Unity Bug Reporter
+    filedesc: Unity Bug Reporter
+    filever:  4.6.1.51269
+    prodver:  4.6.1.51269

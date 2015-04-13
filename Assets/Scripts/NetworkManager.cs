@@ -6,6 +6,7 @@ public class NetworkManager : MonoBehaviour {
 
 	private const string roomName = "RoomName";
 	private RoomInfo[] roomsList;
+	public GameObject anchor;
 	
 	public GameObject playerPrefab;
 
@@ -25,7 +26,9 @@ public class NetworkManager : MonoBehaviour {
 	{
 		Debug.Log("Connected to Room");
 		// Spawn player
-		PhotonNetwork.Instantiate(playerPrefab.name, Vector3.up * 5, Quaternion.identity, 0);
+		GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
+		obj.transform.parent = GameObject.FindGameObjectWithTag ("imageTarget").transform;
+		obj.transform.localScale = anchor.transform.localScale;
 	}
 
 	void OnGUI()

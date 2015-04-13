@@ -18,7 +18,7 @@ Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Ma
 Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.337 seconds
+- Completed reload, in  0.057 seconds
 desktop: 1920x1080 64Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
