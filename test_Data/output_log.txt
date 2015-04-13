@@ -1,0 +1,60 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Microsoft Basic Render Driver (ID=0x8c)
+    Vendor:   Microsoft
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
+desktop: 1920x1080 64Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Microsoft Basic Render Driver (ID=0x8c)
+    Vendor:   Microsoft
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.074 seconds
+desktop: 1920x1080 64Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\test_Data\Managed\System.dll (this message is harmless)
+Connected to Room
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Connected to Room
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
