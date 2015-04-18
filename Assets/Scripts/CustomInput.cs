@@ -13,10 +13,10 @@ public class CustomInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.touchCount == 0) {
-			SetAxis ("Horizontal", Input.GetAxis ("Horizontal"));
-			SetAxis ("Vertical", Input.GetAxis ("Vertical"));
-		}
+//		if (Input.touchCount == 0) {
+//			SetAxis ("Horizontal", Input.GetAxis ("Horizontal"));
+//			SetAxis ("Vertical", Input.GetAxis ("Vertical"));
+//		}
 	}
 
 	static public float GetAxis(string axis){
