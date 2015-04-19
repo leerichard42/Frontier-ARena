@@ -40,6 +40,7 @@ public class  JoystickManager : MonoBehaviour
 		
 		padBackgroundPosition = new Vector2(Screen.width / 8.0f, Screen.height * 4.0f / 5.0f);
 		padControllerPosition = padBackgroundPosition;
+		moveTouchPosition = padBackgroundPosition;
 	}
 	
 	public void Update()
@@ -61,14 +62,28 @@ public class  JoystickManager : MonoBehaviour
 	public void checkTouch(){
 		if (isControllable)
 		{
-			checkMoveTouch();
-			checkAttackTouch();
+			if(Input.touchCount > 0){
+				if(Input.touches[0].position.x < Screen.width / 2){ //Left side
+					checkMoveTouch(0);
+				}
+				else{ //Right side
+					checkAttackTouch(0);
+				}
+				if(Input.touchCount > 1){
+					if(Input.touches[1].position.x < Screen.width / 2){ //Left side
+						checkMoveTouch(1);
+					}
+					else{ //Right side
+						checkAttackTouch(1);
+					}
+				}
+			}
 		}
 	}
 	
-	void checkMoveTouch(){
-		if (Input.touchCount > 0) {
-			Touch touch = Input.touches [0];
+	void checkMoveTouch(int touchID){
+//		if (Input.touchCount > 0) {
+			Touch touch = Input.touches [touchID];
 			Vector2 touchPosition = new Vector2 (touch.position.x, Screen.height - touch.position.y);
 			moveTouchPosition = touchPosition;
 			switch (touch.phase) {
@@ -95,20 +110,22 @@ public class  JoystickManager : MonoBehaviour
 			case TouchPhase.Canceled:
 				isMovingFinger = false;
 				padControllerPosition = padBackgroundPosition;
+				moveTouchPosition = padBackgroundPosition;
 				break;
 				
 			case TouchPhase.Ended:
 				isMovingFinger = false;
 				padControllerPosition = padBackgroundPosition;
+				moveTouchPosition = padBackgroundPosition;
 				break;
 			}
-		}
+//		}
 	}
 
-	void checkAttackTouch(){
-		if (Input.touchCount > 1) {
+	void checkAttackTouch(int touchID){
+//		if (Input.touchCount > 1) {
 			attackTimer += Time.deltaTime;
-			Touch touch = Input.touches [1];
+			Touch touch = Input.touches [touchID];
 			Vector2 touchPosition = new Vector2 (touch.position.x, Screen.height - touch.position.y);
 			switch (touch.phase) {
 			case TouchPhase.Began:
@@ -150,7 +167,7 @@ public class  JoystickManager : MonoBehaviour
 				}
 				break;
 			}
-		}
+//		}
 	}
 
 	public void SetIsControllable(bool isControllable)

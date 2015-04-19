@@ -27,5 +27,8 @@ public class AttackColliderScript : MonoBehaviour {
 				enemy.takeDamage(15);
 			}
 		}
+		if (other.gameObject.tag == "Dummy") {
+			other.gameObject.GetComponent<DummyScript>().takeHit();
+		}
 	}
 }
