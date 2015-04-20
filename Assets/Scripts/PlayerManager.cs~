@@ -21,11 +21,13 @@ public class PlayerManager : MonoBehaviour {
 	
 	public AttackStatus attackStatus = AttackStatus.Idle;
 	public enum AttackStatus{ Idle, Preparation, LightAttack, HeavyAttack, Cooldown, DashAttack, DashCooldown}
-	
+
+	private Animator animator;
 	// Use this for initialization
 	void Start () {
 		camera = GameObject.Find ("Main Camera");
 		attackCollider = transform.FindChild ("Attack Collider").gameObject;
+		animator = gameObject.GetComponent<Animator> ();
 		attackCollider.SetActive(false);
 		health = 100;
 	}
@@ -123,7 +125,14 @@ public class PlayerManager : MonoBehaviour {
 		float strafeInput = getStrafeInput();
 		float forwardInput = getForwardInput();
 		if (strafeInput != 0 || forwardInput != 0) {
+			if(!animator.GetBool("walking")){
+				animator.SetBool("walking", true);
+			}
 			rigidbody.MovePosition (transform.position + transform.forward * runSpeed);
+		} else {
+			if(animator.GetBool("walking")){
+				animator.SetBool("walking", false);
+			}
 		}
 	}
 	

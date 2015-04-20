@@ -23,6 +23,8 @@ public class  JoystickManager : MonoBehaviour
 	public Vector2 startAttackTouch;
 	public float attackTimer;
 	public float lightAttackTime = 0.3f;
+
+	private Animator animator;
 	
 	public void Awake()
 	{
@@ -41,6 +43,8 @@ public class  JoystickManager : MonoBehaviour
 		padBackgroundPosition = new Vector2(Screen.width / 8.0f, Screen.height * 4.0f / 5.0f);
 		padControllerPosition = padBackgroundPosition;
 		moveTouchPosition = padBackgroundPosition;
+
+		animator = gameObject.GetComponent<Animator> ();
 	}
 	
 	public void Update()
