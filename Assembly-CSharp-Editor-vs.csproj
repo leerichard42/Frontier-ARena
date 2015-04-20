@@ -70,7 +70,6 @@
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\RenderVideoBackground.shader" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VideoBackground.shader" />
      <None Include="Assets\Plugins\release_history.txt" />
-     <None Include="Assets\fightBOT (free)\model\Materials\roboShader.shader" />
      <None Include="Assets\Editor\QCAR\WebcamProfiles\profiles.xml" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\DepthMask.shader" />
      <None Include="Assets\StreamingAssets\QCAR\FrontierARenaDatabase.xml" />
@@ -80,9 +79,6 @@
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\Text3D.shader" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\readme_SDK.txt" />
- <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/Anthony/Documents/GitHub/Frontier-ARena/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
- </Reference>
  <Reference Include="Assembly-UnityScript-Editor-firstpass">
  <HintPath>C:/Users/Anthony/Documents/GitHub/Frontier-ARena/Library/ScriptAssemblies/Assembly-UnityScript-Editor-firstpass.dll</HintPath>
  </Reference>
