@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : Photon.MonoBehaviour {
 	public float health;
 	float forwardSpeed = 0.1f;
 	float strafeSpeed = 0.15f;
@@ -34,65 +34,67 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){
-			cancelAttack();
-		}
-
-		if (hitStunned) {
-			if(waitTimer <= 0){
-				hitStunned = false;
-				gameObject.renderer.material.color = new Color (1, 1, 1);
+		if(photonView.isMine){
+			if(Input.GetKeyDown(KeyCode.Space)){
+				cancelAttack();
 			}
-			else{
-				waitTimer -= Time.deltaTime;
-			}
-			return;
-		}
-		if(attackStatus == AttackStatus.Preparation
-		   || attackStatus == AttackStatus.Idle 
-		   || attackStatus == AttackStatus.DashCooldown){
-			checkRotation ();
-		}
-		if (waitTimer <= 0) {
-			checkMovement();
-			checkAttack ();
-		} else {
-			waitTimer -= Time.deltaTime;
-			if(attackStatus == AttackStatus.DashAttack){
-				rigidbody.MovePosition (transform.position + transform.forward * dashSpeed);
-			}
-			
-			if(waitTimer <= 0){
-				if(attackStatus == AttackStatus.LightAttack){
-					attackStatus = AttackStatus.Idle;
-					attackCollider.SetActive(false);
-				}
-				else if(attackStatus == AttackStatus.Preparation){
-					attackStatus = AttackStatus.HeavyAttack;
-					attackCollider.SetActive(true);
-					waitTimer = heavyDurationTime;
-				}
-				else if(attackStatus == AttackStatus.HeavyAttack){
-					attackStatus = AttackStatus.Cooldown;
-					attackCollider.SetActive(false);
-					waitTimer = heavyCooldownTime;
-				}
-				else if(attackStatus == AttackStatus.Cooldown){
-					attackStatus = AttackStatus.Idle;
-				}
-				else if(attackStatus == AttackStatus.DashAttack){
-					attackStatus = AttackStatus.DashCooldown;
-					attackCollider.SetActive(false);
-					waitTimer = dashCooldownTime;
-				}
-				else if(attackStatus == AttackStatus.DashCooldown){
-					attackStatus = AttackStatus.Idle;
+	
+			if (hitStunned) {
+				if(waitTimer <= 0){
+					hitStunned = false;
+					gameObject.renderer.material.color = new Color (1, 1, 1);
 				}
 				else{
-					Debug.Log ("Attack Status Error");
+					waitTimer -= Time.deltaTime;
 				}
+				return;
 			}
-			
+			if(attackStatus == AttackStatus.Preparation
+			|| attackStatus == AttackStatus.Idle 
+			|| attackStatus == AttackStatus.DashCooldown){
+				checkRotation ();
+			}
+			if (waitTimer <= 0) {
+				checkMovement();
+				checkAttack ();
+			} else {
+				waitTimer -= Time.deltaTime;
+				if(attackStatus == AttackStatus.DashAttack){
+					rigidbody.MovePosition (transform.position + transform.forward * dashSpeed);
+				}
+				
+				if(waitTimer <= 0){
+					if(attackStatus == AttackStatus.LightAttack){
+						attackStatus = AttackStatus.Idle;
+						attackCollider.SetActive(false);
+					}
+					else if(attackStatus == AttackStatus.Preparation){
+						attackStatus = AttackStatus.HeavyAttack;
+						attackCollider.SetActive(true);
+						waitTimer = heavyDurationTime;
+					}
+					else if(attackStatus == AttackStatus.HeavyAttack){
+						attackStatus = AttackStatus.Cooldown;
+						attackCollider.SetActive(false);
+						waitTimer = heavyCooldownTime;
+					}
+					else if(attackStatus == AttackStatus.Cooldown){
+						attackStatus = AttackStatus.Idle;
+					}
+					else if(attackStatus == AttackStatus.DashAttack){
+						attackStatus = AttackStatus.DashCooldown;
+						attackCollider.SetActive(false);
+						waitTimer = dashCooldownTime;
+					}
+					else if(attackStatus == AttackStatus.DashCooldown){
+						attackStatus = AttackStatus.Idle;
+					}
+					else{
+						Debug.Log ("Attack Status Error");
+					}
+				}
+				
+			}
 		}
 	}
 	
