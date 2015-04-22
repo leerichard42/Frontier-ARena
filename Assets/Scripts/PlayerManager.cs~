@@ -1,209 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerManager : MonoBehaviour {
-	public float health;
-	float forwardSpeed = 0.1f;
-	float strafeSpeed = 0.15f;
-	float runSpeed = 0.3f;
-	float dashSpeed = 0.6f;
-	GameObject camera;
-	GameObject attackCollider;
-	float waitTimer;
-	float lightDurationTime = 0.3f;
-	float heavyPrepTime = 0.5f;
-	float heavyDurationTime = 0.3f;
-	float heavyCooldownTime = 0.7f;
-	float dashDurationTime = 0.8f;
-	float dashCooldownTime = 0.5f;
-	float hitStunTime = 0.3f;
-	bool hitStunned = false;
-	
-	public AttackStatus attackStatus = AttackStatus.Idle;
-	public enum AttackStatus{ Idle, Preparation, LightAttack, HeavyAttack, Cooldown, DashAttack, DashCooldown}
+public class PlayerManager : Photon.MonoBehaviour {
+	GameObject cam;
+	public float chargeTimer;
 
-	private Animator animator;
-	// Use this for initialization
 	void Start () {
-		camera = GameObject.Find ("Main Camera");
-		attackCollider = transform.FindChild ("Attack Collider").gameObject;
-		animator = gameObject.GetComponent<Animator> ();
-		attackCollider.SetActive(false);
-		health = 100;
+		cam = GameObject.Find ("Main Camera");
+		chargeTimer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){
-			cancelAttack();
-		}
+//		if(photonView.isMine){
 
-		if (hitStunned) {
-			if(waitTimer <= 0){
-				hitStunned = false;
-				gameObject.renderer.material.color = new Color (1, 1, 1);
+		transform.LookAt (transform.position + rigidbody.velocity);
+		if(Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)){
+			chargeTimer = 0;
+		}
+		if (Input.GetKey (KeyCode.Space) || (Input.touchCount > 0 
+		                                     && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved))) {
+			chargeTimer += Time.deltaTime;
+		}
+		if (Input.GetKeyUp (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) {
+//			Vector3 launchDir = (transform.position - cam.transform.position).normalized;
+			Vector3 launchDir = cam.transform.forward;
+			launchDir.y = 0;
+			transform.LookAt(transform.position + launchDir);
+			rigidbody.velocity += launchDir * Mathf.Min(chargeTimer, 2) * 20;
+		}
+//		}
+	}
+
+	public void hit(){
+//		Destroy (gameObject);
+		transform.position = Vector3.zero;
+	}
+
+	void OnCollisionEnter(Collision collision){
+		Debug.Log ("Hit: " + collision.gameObject.name + "," + gameObject.name);
+		GameObject obj = collision.gameObject;
+		if (obj.tag == "Player") {
+			Debug.Log ("Hit Player");
+			if(Vector3.Dot(obj.transform.forward, (obj.transform.position - transform.position)) > 0){
+				obj.GetComponent<PlayerManager>().hit();
 			}
-			else{
-				waitTimer -= Time.deltaTime;
-			}
-			return;
-		}
-		if(attackStatus == AttackStatus.Preparation
-		   || attackStatus == AttackStatus.Idle 
-		   || attackStatus == AttackStatus.DashCooldown){
-			checkRotation ();
-		}
-		if (waitTimer <= 0) {
-			checkMovement();
-			checkAttack ();
-		} else {
-			waitTimer -= Time.deltaTime;
-			if(attackStatus == AttackStatus.DashAttack){
-				rigidbody.MovePosition (transform.position + transform.forward * dashSpeed);
-			}
-			
-			if(waitTimer <= 0){
-				if(attackStatus == AttackStatus.LightAttack){
-					attackStatus = AttackStatus.Idle;
-					attackCollider.SetActive(false);
-				}
-				else if(attackStatus == AttackStatus.Preparation){
-					attackStatus = AttackStatus.HeavyAttack;
-					attackCollider.SetActive(true);
-					waitTimer = heavyDurationTime;
-				}
-				else if(attackStatus == AttackStatus.HeavyAttack){
-					attackStatus = AttackStatus.Cooldown;
-					attackCollider.SetActive(false);
-					waitTimer = heavyCooldownTime;
-				}
-				else if(attackStatus == AttackStatus.Cooldown){
-					attackStatus = AttackStatus.Idle;
-				}
-				else if(attackStatus == AttackStatus.DashAttack){
-					attackStatus = AttackStatus.DashCooldown;
-					attackCollider.SetActive(false);
-					waitTimer = dashCooldownTime;
-				}
-				else if(attackStatus == AttackStatus.DashCooldown){
-					attackStatus = AttackStatus.Idle;
-				}
-				else{
-					Debug.Log ("Attack Status Error");
-				}
-			}
-			
-		}
-	}
-	
-	public void takeDamage(float damage){
-		health -= damage;
-		gameObject.renderer.material.color = new Color (1, 0, 0);
-		hitStunned = true;
-		waitTimer = hitStunTime;
-		attackStatus = AttackStatus.Idle;
-	}
-	
-	void checkRotation(){
-		float strafeInput = getStrafeInput();
-		float forwardInput = getForwardInput();
-		setRotation (strafeInput, forwardInput);
-	}
-
-	public void setRotation(float strafeInput, float forwardInput){
-		Vector3 dirToMove = Vector3.Normalize (camera.transform.forward * forwardInput
-		                                       + camera.transform.right * strafeInput);
-		
-		
-		Vector3 target = transform.position + dirToMove * 10;
-		transform.LookAt (new Vector3 (target.x,
-		                               transform.position.y,
-		                               target.z));
-	}
-
-	void checkMovement(){
-		float strafeInput = getStrafeInput();
-		float forwardInput = getForwardInput();
-		if (strafeInput != 0 || forwardInput != 0) {
-			if(!animator.GetBool("walking")){
-				animator.SetBool("walking", true);
-			}
-			rigidbody.MovePosition (transform.position + transform.forward * runSpeed);
-		} else {
-			if(animator.GetBool("walking")){
-				animator.SetBool("walking", false);
-			}
-		}
-	}
-	
-	float getStrafeInput(){
-		float strafeInput = 0;
-		if (Input.touchCount == 0) {
-			strafeInput = Input.GetAxis ("Horizontal");
-		} else {
-			strafeInput = CustomInput.GetAxis ("Horizontal");
-		}
-		return strafeInput;
-	}
-	
-	float getForwardInput(){
-		float forwardInput = 0;
-		if (Input.touchCount == 0) {
-			forwardInput = Input.GetAxis ("Vertical");
-		} else {
-			forwardInput = CustomInput.GetAxis ("Vertical");
-		}
-		return forwardInput;
-	}
-	
-	void checkAttack(){
-		//Keyboard Input
-		if (Input.GetKeyDown (KeyCode.J)) {
-			lightAttack ();
-		}
-		if (Input.GetKeyDown (KeyCode.K)) {
-			heavyAttack();
-		}
-		if (Input.GetKeyDown (KeyCode.L)) {
-			dashAttack();
-		}
-
-		
-		if (attackStatus == AttackStatus.LightAttack) {
-			attackCollider.SetActive(true);
-			waitTimer = lightDurationTime;
-		}
-		if (attackStatus == AttackStatus.Preparation) {
-			waitTimer = heavyPrepTime;
-		}
-		if (attackStatus == AttackStatus.DashAttack) {
-			waitTimer = dashDurationTime;
-			attackCollider.SetActive(true);
-		}
-	}
-
-	public void lightAttack(){
-		if (waitTimer <= 0) {
-			attackStatus = AttackStatus.LightAttack;
-		}
-	}
-
-	public void heavyAttack(){
-		if (waitTimer <= 0) {
-			attackStatus = AttackStatus.Preparation;
-		}
-	}
-
-	public void dashAttack(){
-		if (waitTimer <= 0) {
-			attackStatus = AttackStatus.DashAttack;
-		}
-	}
-
-	public void cancelAttack(){
-		if(attackStatus == AttackStatus.Preparation){
-			attackStatus = AttackStatus.Idle;
-			waitTimer = 0;
 		}
 	}
 }
