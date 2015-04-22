@@ -1,17 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerManager.cs">
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkManager.cs">
->>>>>>> origin/Networking
     <Files>
-      <File FileName="Assets\Scripts\PlayerManager.cs" Line="37" Column="37" />
-      <File FileName="Assets\Scripts\HealthBarScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\JoystickManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TestCollisionScript.cs" Line="16" Column="1" />
+      <File FileName="Assets\Scripts\PlayerManager.cs" Line="54" Column="75" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
