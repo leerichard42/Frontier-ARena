@@ -10,7 +10,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
 	void Start () {
-		cam = GameObject.Find("ARCamera").transform.GetComponentInChildren<Camera>();
+//		cam = GameObject.Find("ARCamera").transform.GetComponentInChildren<Camera>();
+		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		panel = GameObject.FindGameObjectWithTag("MainPanel");
 		panel.GetComponent<Image>().color = bad;

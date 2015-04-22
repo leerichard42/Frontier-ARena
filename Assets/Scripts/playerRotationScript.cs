@@ -12,7 +12,7 @@ public class playerRotationScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
-		camera = this.transform.GetComponentInChildren<Camera>();
+		camera = GetComponent<Camera>();
 		panel = GameObject.FindGameObjectWithTag("MainPanel");
 		panel.GetComponent<Image>().color = bad;
 	}
