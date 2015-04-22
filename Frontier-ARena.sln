@@ -47,13 +47,19 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 <<<<<<< HEAD
+<<<<<<< HEAD
 																																									GlobalSection(MonoDevelopProperties) = preSolution
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> origin/Networking
 																																			GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> origin/Networking
+<<<<<<< HEAD
+>>>>>>> origin/Networking
+=======
 >>>>>>> origin/Networking
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0

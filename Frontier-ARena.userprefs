@@ -6,6 +6,7 @@
 <<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerManager.cs">
 =======
+<<<<<<< HEAD
 >>>>>>> origin/Networking
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkManager.cs">
 >>>>>>> origin/Networking
@@ -14,12 +15,20 @@
       <File FileName="Assets\Scripts\NetworkManager.cs" Line="73" Column="20" />
       <File FileName="Assets\Scripts\PlayerManager.cs" Line="14" Column="29" />
 =======
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkManager.cs">
+>>>>>>> origin/Networking
+    <Files>
+>>>>>>> origin/Networking
       <File FileName="Assets\Scripts\PlayerManager.cs" Line="37" Column="37" />
       <File FileName="Assets\Scripts\HealthBarScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\JoystickManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TestCollisionScript.cs" Line="16" Column="1" />
+<<<<<<< HEAD
+>>>>>>> origin/Networking
+=======
 >>>>>>> origin/Networking
     </Files>
   </MonoDevelop.Ide.Workbench>
