@@ -1,0 +1,198 @@
+System:
+  OS: Windows 8.1  (6.3.9600) 64bit
+  CPU: Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz, count: 8
+  Physical RAM: 8140 MB
+  Addressable RAM: 2048 MB
+
+D3D9:
+  Renderer: Microsoft Basic Render Driver
+  VendorID: 1414
+  Driver: d3d10warp.dll 6.3.9600.17211
+  VRAM: 256 (via DXGI)
+
+OpenGL:
+  Version: 1.1.0
+  Vendor: Microsoft Corporation
+  Renderer: GDI Generic
+  VRAM: 256 (via DXGI)
+  Extensions: GL_WIN_swap_hint GL_EXT_bgra GL_EXT_paletted_texture
+
+User locale: en-US
+System locale: en-US
+
+Running processes:
+NvBackend.exe (5080)
+    path: C:\Program Files (x86)\NVIDIA Corporation\Update Core\NvBackend.exe
+    company:  NVIDIA Corporation
+    product:  NVIDIA GeForce Experience
+    filedesc: NVIDIA GeForce Experience Backend
+    filever:  16.18.9.0
+    prodver:  16.18.9.0
+AvastUI.exe (6200)
+    path: C:\Program Files\AVAST Software\Avast\AvastUI.exe
+    company:  AVAST Software
+    product:  avast! Antivirus 
+    filedesc: avast! Antivirus
+    filever:  9.0.2021.531
+    prodver:  9.0.2021.531
+jusched.exe (5228)
+    path: C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe
+    company:  Oracle Corporation
+    product:  Java(TM) Platform SE Auto Updater
+    filedesc: Java(TM) Update Scheduler
+    filever:  2.1.67.1
+    prodver:  2.1.67.1
+Dropbox.exe (2044)
+    path: C:\Users\Anthony\AppData\Roaming\Dropbox\bin\Dropbox.exe
+    company:  Dropbox, Inc.
+    product:  Dropbox
+    filedesc: Dropbox
+    filever:  3.4.3.0
+    prodver:  1.0.0.1
+UA.exe (4032)
+    path: C:\Users\Anthony\AppData\Roaming\VERIZON\UA_ar\UA.exe
+    company:  SAMSUNG Electornics Co., Ltd.
+    product:  UA
+    filedesc: Verizon 2.0 UA for Android
+    filever:  1.0.0.1
+    prodver:  1.0.0.1
+firefox.exe (5096)
+    path: C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+    company:  Mozilla Corporation
+    product:  Firefox
+    filedesc: Firefox
+    filever:  37.0.1.5570
+    prodver:  37.0.1.0
+GitHub.exe (8924)
+    path: C:\Users\Anthony\AppData\Local\Apps\2.0\JNV66RTL.GZ0\PCGVE56Y.42A\gith..tion_317444273a93ac29_0002.000d_7c798cfff9a06ed4\GitHub.exe
+    company:  GitHub, Inc.
+    product:  GitHub for Windows
+    filedesc: GitHub
+    filever:  2.13.1.2
+    prodver:  2.13.1.2
+ssh-agent.exe (4280)
+    path: C:\Users\Anthony\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\ssh-agent.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+Agent.exe (6480)
+    path: C:\ProgramData\Battle.net\Agent\Agent.3918\Agent.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net Update Agent
+    filedesc: Battle.net Update Agent
+    filever:  1.18.1.3918
+    prodver:  1.18.1.3918
+Battle.net.exe (280)
+    path: C:\Program Files (x86)\Battle.net\Battle.net.5669\Battle.net.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net desktop app
+    filedesc: Battle.net desktop app
+    filever:  1.2.7.5669
+    prodver:  1.2.7.5669
+wsftpgui.exe (3764)
+    path: C:\Program Files (x86)\Ipswitch\WS_FTP 12\wsftpgui.exe
+    company:  Ipswitch, Inc. 10 Maguire Road - Suite 220 Lexington, MA 02421
+    product:  WS_FTP Pro/LE
+    filedesc: WS_FTP Pro/LE
+    filever:  12.3.0.1
+    prodver:  12.3.0.1
+MonoDevelop.exe (8020)
+    path: C:\Program Files (x86)\Unity\MonoDevelop\bin\MonoDevelop.exe
+    company:  
+    product:  MonoDevelop
+    filedesc: MonoDevelop
+    filever:  2.6.0.0
+    prodver:  2.6.0.0
+adb.exe (9180)
+    path: C:\Android\android-sdk\platform-tools\adb.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+plugin-container.exe (3020)
+    path: C:\Program Files (x86)\Mozilla Firefox\plugin-container.exe
+    company:  Mozilla Corporation
+    product:  Firefox
+    filedesc: Plugin Container for Firefox
+    filever:  37.0.1.5570
+    prodver:  37.0.1.0
+FlashPlayerPlugin_17_0_0_169.exe (1168)
+    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
+    company:  Adobe Systems, Inc.
+    product:  Shockwave Flash
+    filedesc: Adobe Flash Player 17.0 r0
+    filever:  17.0.0.169
+    prodver:  17.0.0.169
+FlashPlayerPlugin_17_0_0_169.exe (4332)
+    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
+    company:  Adobe Systems, Inc.
+    product:  Shockwave Flash
+    filedesc: Adobe Flash Player 17.0 r0
+    filever:  17.0.0.169
+    prodver:  17.0.0.169
+notepad++.exe (6064)
+    path: C:\Program Files (x86)\Notepad++\notepad++.exe
+    company:  Don HO don.h@free.fr
+    product:  Notepad++
+    filedesc: Notepad++ : a free (GNU) source code editor
+    filever:  6.7.5.0
+    prodver:  6.7.5.0
+chrome.exe (992)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+chrome.exe (2212)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+chrome.exe (4544)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+chrome.exe (7416)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+chrome.exe (9976)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+chrome.exe (4760)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  42.0.2311.90
+    prodver:  42.0.2311.90
+UnityBugReporter.exe (11040)
+    path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
+    company:  Unity Technologies ApS
+    product:  Unity Bug Reporter
+    filedesc: Unity Bug Reporter
+    filever:  4.6.1.51269
+    prodver:  4.6.1.51269
+UnityBugReporter.exe (8792)
+    path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
+    company:  Unity Technologies ApS
+    product:  Unity Bug Reporter
+    filedesc: Unity Bug Reporter
+    filever:  4.6.1.51269
+    prodver:  4.6.1.51269

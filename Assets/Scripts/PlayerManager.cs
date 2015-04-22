@@ -6,8 +6,16 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public float chargeTimer;
 
 	void Start () {
+<<<<<<< HEAD
 		cam = GameObject.Find ("Main Camera");
 		chargeTimer = 0;
+=======
+		camera = GameObject.FindGameObjectWithTag("MainCamera");
+		attackCollider = transform.FindChild ("Attack Collider").gameObject;
+		animator = gameObject.GetComponent<Animator> ();
+		attackCollider.SetActive(false);
+		health = 100;
+>>>>>>> origin/Networking
 	}
 	
 	// Update is called once per frame
