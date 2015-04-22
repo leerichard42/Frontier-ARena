@@ -25,7 +25,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	private Animator animator;
 	// Use this for initialization
 	void Start () {
-		camera = GameObject.Find ("Main Camera");
+		camera = GameObject.FindGameObjectWithTag("MainCamera");
 		attackCollider = transform.FindChild ("Attack Collider").gameObject;
 		animator = gameObject.GetComponent<Animator> ();
 		attackCollider.SetActive(false);

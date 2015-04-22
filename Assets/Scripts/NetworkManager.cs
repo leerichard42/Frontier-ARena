@@ -27,8 +27,8 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log("Connected to Room");
 		// Spawn player
 		GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
-		//obj.transform.parent = GameObject.FindGameObjectWithTag ("imageTarget").transform;
-		//obj.transform.localScale = anchor.transform.localScale;
+		obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
+		obj.transform.localScale = anchor.transform.localScale;
 	}
 
 	void OnGUI()
