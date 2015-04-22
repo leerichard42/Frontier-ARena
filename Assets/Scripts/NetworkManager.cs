@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class NetworkManager : MonoBehaviour {
+public class NetworkManager : Photon.MonoBehaviour {
 
 	private const string roomName = "RoomName";
 	private RoomInfo[] roomsList;
@@ -26,9 +26,10 @@ public class NetworkManager : MonoBehaviour {
 	{
 		Debug.Log("Connected to Room");
 		// Spawn player
-		GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
+		GameObject obj = PhotonNetwork.Instantiate (playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
 		obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
 		obj.transform.localScale = anchor.transform.localScale;
+		photonView.RPC ("SetParent", PhotonTargets.AllViaServer);
 	}
 
 	void OnGUI()
@@ -60,5 +61,19 @@ public class NetworkManager : MonoBehaviour {
 		roomsList = PhotonNetwork.GetRoomList();
 	}
 
+	[RPC] void InstantiatePlayer(){
+		GameObject obj = PhotonNetwork.Instantiate (playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
+		obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
+		obj.transform.localScale = anchor.transform.localScale;
+	}
+
+	[RPC] void SetParent(){
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach(GameObject player in players){
+			Debug.Log("hi");
+			player.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
+			player.transform.localScale = anchor.transform.localScale;
+		}
+	}
 	
 }
