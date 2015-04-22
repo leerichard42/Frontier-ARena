@@ -13,8 +13,8 @@ public class HealthBarScript : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (player && player.health > 0) {
-			GUI.DrawTexture(new Rect(0, 0, Screen.width * player.health/100, 50), HealthBarTexture, ScaleMode.StretchToFill, true, 0);
-		}
+//		if (player && player.health > 0) {
+//			GUI.DrawTexture(new Rect(0, 0, Screen.width * player.health/100, 50), HealthBarTexture, ScaleMode.StretchToFill, true, 0);
+//		}
 	}
 }
