@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\playerRotationScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerManager.cs" Line="64" Column="65" />
-      <File FileName="Assets\Scripts\playerRotationScript.cs" Line="26" Column="57" />
+      <File FileName="Assets\Scripts\PlayerManager.cs" Line="84" Column="1" />
+      <File FileName="Assets\Scripts\playerRotationScript.cs" Line="34" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

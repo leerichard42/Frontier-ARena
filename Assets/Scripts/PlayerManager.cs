@@ -10,7 +10,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
 	void Start () {
-//		cam = GameObject.Find("ARCamera").transform.GetComponentInChildren<Camera>();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		panel = GameObject.FindGameObjectWithTag("MainPanel");
@@ -20,16 +19,16 @@ public class PlayerManager : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		if(photonView.isMine){]
-//		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-//
-//		if (screenPos.x < camera.pixelWidth * .75f && screenPos.x > camera.pixelWidth * .25f
-//			&& screenPos.y < camera.pixelHeight * .75f && screenPos.y > camera.pixelHeight * .25f) {
-//			checkMovement ();
-//			panel.GetComponent<Image>().color = good;
-//		} else {
-//			panel.GetComponent<Image>().color = bad;
-//		}
-//		}
+		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
+		
+		if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
+		    && screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f){
+			checkMovement();
+			panel.GetComponent<Image>().color = good;
+		}
+		else{
+			panel.GetComponent<Image>().color = bad;
+		}
 	}
 
 	public void checkMovement(){
