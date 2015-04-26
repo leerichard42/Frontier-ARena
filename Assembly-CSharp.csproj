@@ -141,9 +141,10 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeTrackableEventHandler.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WordBehaviour.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\ChargeBarScript.cs" />
      <Compile Include="Assets\Scripts\CustomInput.cs" />
      <Compile Include="Assets\Scripts\DummyScript.cs" />
-     <Compile Include="Assets\Scripts\HealthBarScript.cs" />
+     <Compile Include="Assets\Scripts\HitboxScript.cs" />
      <Compile Include="Assets\Scripts\JoystickManager.cs" />
      <Compile Include="Assets\Scripts\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
