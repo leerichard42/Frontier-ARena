@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: ab6fe07631bd1e94d9115b25a9ca07f4
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: group
+    100002: group1
+    100004: group1_pCube5
+    100006: group2
+    100008: joint1
+    100010: joint10
+    100012: joint11
+    100014: joint2
+    100016: joint3
+    100018: joint4
+    100020: joint5
+    100022: joint6
+    100024: joint7
+    100026: joint8
+    100028: joint9
+    100030: //RootNode
+    100032: pCone1
+    100034: pCone1 1
+    100036: pCube1
+    100038: pCube10
+    100040: pCube11
+    100042: pCube12
+    100044: pCube12 1
+    100046: pCube13
+    100048: pCube13 1
+    100050: pCube14
+    100052: pCube14 1
+    100054: pCube15
+    100056: pCube15 1
+    100058: pCube16
+    100060: pCube16 1
+    100062: pCube17
+    100064: pCube17 1
+    100066: pCube18
+    100068: pCube18 1
+    100070: pCube2
+    100072: pCube3
+    100074: pCube4
+    100076: pCube5
+    100078: pCube5 1
+    100080: pCube7
+    100082: pCube7 1
+    100084: pSphere1
+    100086: pSphere1 1
+    100088: pSphere2
+    100090: pSphere2 1
+    100092: pSphere3
+    100094: pSphere3 1
+    100096: pSphere4
+    100098: pSphere4 1
+    100100: transform1
+    100102: transform10
+    100104: transform11
+    100106: transform12
+    100108: transform13
+    100110: transform14
+    100112: transform15
+    100114: transform16
+    100116: transform17
+    100118: transform18
+    100120: transform19
+    100122: transform2
+    100124: transform20
+    100126: transform3
+    100128: transform4
+    100130: transform5
+    100132: transform6
+    100134: transform7
+    100136: transform8
+    100138: transform9
+    400000: group
+    400002: group1
+    400004: group1_pCube5
+    400006: group2
+    400008: joint1
+    400010: joint10
+    400012: joint11
+    400014: joint2
+    400016: joint3
+    400018: joint4
+    400020: joint5
+    400022: joint6
+    400024: joint7
+    400026: joint8
+    400028: joint9
+    400030: //RootNode
+    400032: pCone1
+    400034: pCone1 1
+    400036: pCube1
+    400038: pCube10
+    400040: pCube11
+    400042: pCube12
+    400044: pCube12 1
+    400046: pCube13
+    400048: pCube13 1
+    400050: pCube14
+    400052: pCube14 1
+    400054: pCube15
+    400056: pCube15 1
+    400058: pCube16
+    400060: pCube16 1
+    400062: pCube17
+    400064: pCube17 1
+    400066: pCube18
+    400068: pCube18 1
+    400070: pCube2
+    400072: pCube3
+    400074: pCube4
+    400076: pCube5
+    400078: pCube5 1
+    400080: pCube7
+    400082: pCube7 1
+    400084: pSphere1
+    400086: pSphere1 1
+    400088: pSphere2
+    400090: pSphere2 1
+    400092: pSphere3
+    400094: pSphere3 1
+    400096: pSphere4
+    400098: pSphere4 1
+    400100: transform1
+    400102: transform10
+    400104: transform11
+    400106: transform12
+    400108: transform13
+    400110: transform14
+    400112: transform15
+    400114: transform16
+    400116: transform17
+    400118: transform18
+    400120: transform19
+    400122: transform2
+    400124: transform20
+    400126: transform3
+    400128: transform4
+    400130: transform5
+    400132: transform6
+    400134: transform7
+    400136: transform8
+    400138: transform9
+    2300000: pCone1 1
+    2300002: pCube12 1
+    2300004: pCube13 1
+    2300006: pCube14 1
+    2300008: pCube15 1
+    2300010: pCube16 1
+    2300012: pCube17 1
+    2300014: pCube18 1
+    2300016: pCube5 1
+    2300018: pCube7 1
+    2300020: pSphere1 1
+    2300022: pSphere2 1
+    2300024: pSphere3 1
+    2300026: pSphere4 1
+    3300000: pCone1 1
+    3300002: pCube12 1
+    3300004: pCube13 1
+    3300006: pCube14 1
+    3300008: pCube15 1
+    3300010: pCube16 1
+    3300012: pCube17 1
+    3300014: pCube18 1
+    3300016: pCube5 1
+    3300018: pCube7 1
+    3300020: pSphere1 1
+    3300022: pSphere2 1
+    3300024: pSphere3 1
+    3300026: pSphere4 1
+    4300000: pCube5
+    4300002: pSphere1
+    4300004: pCube7
+    4300006: pCone1
+    4300008: pSphere2
+    4300010: pCube12
+    4300012: pCube13
+    4300014: pCube14
+    4300016: pSphere3
+    4300018: pCube15
+    4300020: pCube16
+    4300022: pSphere4
+    4300024: pCube17
+    4300026: pCube18
+    4300028: group1_pCube5
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: group1_pCube5
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
