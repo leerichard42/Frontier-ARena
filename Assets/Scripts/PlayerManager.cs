@@ -9,75 +9,131 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color good = new Color(1f,1f,1f,50f/255f);
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
+	public float waitTimer;
+	public bool stunned = false;
+	public float stunTime = 0.5f;
+	public float blinksLeft = 4;
+	public float livesLeft = 3;
+	public bool invincible = false;
+	public float invincibilityTimer;
+	public GameObject shield;
+
 	void Start () {
-//		cam = GameObject.Find("ARCamera").transform.GetComponentInChildren<Camera>();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
+		waitTimer = 0;
 		panel = GameObject.FindGameObjectWithTag("MainPanel");
 		panel.GetComponent<Image>().color = bad;
+		shield = transform.FindChild ("Shield").gameObject;
+		shield.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 //		if(photonView.isMine){]
-//		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-//
-//		if (screenPos.x < camera.pixelWidth * .75f && screenPos.x > camera.pixelWidth * .25f
-//			&& screenPos.y < camera.pixelHeight * .75f && screenPos.y > camera.pixelHeight * .25f) {
-//			checkMovement ();
-//			panel.GetComponent<Image>().color = good;
-//		} else {
-//			panel.GetComponent<Image>().color = bad;
-//		}
-//		}
+		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
+		
+		if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
+		    && screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f){
+			checkMovement();
+			panel.GetComponent<Image>().color = good;
+		}
+		else{
+			panel.GetComponent<Image>().color = bad;
+		}
 	}
 
 	public void checkMovement(){
-		if (rigidbody.velocity.magnitude < 1) {
-			if(rigidbody.velocity != Vector3.zero){
-				rigidbody.velocity = Vector3.zero;
-				rigidbody.angularVelocity = Vector3.zero;
-			}
-			else{
-				Vector3 launchDir = cam.transform.forward;
-				launchDir.y = 0;
-				launchDir.Normalize();
-				transform.LookAt(transform.position + launchDir);
-				
+		if (stunned) {
+			Debug.Log("stunned");
+			waitTimer -= Time.deltaTime;
+			if(waitTimer <= 0){
+				if(blinksLeft > 0){
+//					renderer.enabled = !renderer.enabled;
+					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					waitTimer = stunTime;
+					blinksLeft--;
+                }
+				else{
+					livesLeft--;
+					if(livesLeft > 0){
+						stunned = false;
+						GetComponentInChildren<Renderer>().enabled = true;
+					}
+					else{
+						gameObject.SetActive(false);
+					}
+				}
 			}
 		} else {
-			transform.LookAt (transform.position + rigidbody.velocity);
-		}
+			if(invincible){
+				invincibilityTimer -= Time.deltaTime;
+				if(invincibilityTimer <= 0){
+					invincible = false;
+					shield.SetActive(false);
+				}
+			}
+			if (rigidbody.velocity.magnitude < 1) {
+				if (rigidbody.velocity != Vector3.zero) {
+					rigidbody.velocity = Vector3.zero;
+					rigidbody.angularVelocity = Vector3.zero;
+				} else {
+					Vector3 launchDir = cam.transform.forward;
+					launchDir.y = 0;
+					launchDir.Normalize ();
+					transform.LookAt (transform.position + launchDir);
+				
+				}
+			} else {
+				transform.LookAt (transform.position + rigidbody.velocity);
+			}
 		
-		if(Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)){
-			chargeTimer = 0;
-		}
-		if (Input.GetKey (KeyCode.Space) || (Input.touchCount > 0 
-		                                     && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved))) {
-			chargeTimer += Time.deltaTime;
-		}
-		if (Input.GetKeyUp (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) {
-			Vector3 launchDir = cam.transform.forward;
-			launchDir.y = 0;
-			launchDir.Normalize();
-			transform.LookAt(transform.position + launchDir);
-			rigidbody.velocity += launchDir * Mathf.Min(chargeTimer, 2) * 20;
-			Debug.Log ("Launch velocity: " + rigidbody.velocity.magnitude);
+			if (Input.GetKeyDown (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)) {
+				chargeTimer = 0;
+			}
+			if (Input.GetKey (KeyCode.Space) || (Input.touchCount > 0 
+				&& (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved))) {
+				chargeTimer += Time.deltaTime;
+			}
+			if (Input.GetKeyUp (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended)) {
+				Vector3 launchDir = cam.transform.forward;
+				launchDir.y = 0;
+				launchDir.Normalize ();
+				transform.LookAt (transform.position + launchDir);
+				rigidbody.velocity += launchDir * Mathf.Min (chargeTimer, 2) * 20;
+				chargeTimer = 0;
+//				Debug.Log ("Launch velocity: " + rigidbody.velocity.magnitude);
 			
+			}
 		}
 	}
 
 	public void hit(){
 //		Destroy (gameObject);
-		transform.position = Vector3.zero;
+//		Debug.Log ("hit");
+		if (!invincible && !stunned) {
+//			transform.position = Vector3.zero;
+			blinksLeft = 3;
+			waitTimer = stunTime;
+			stunned = true;
+		}
 	}
 
 	void OnCollisionEnter(Collision collision){
-		GameObject obj = collision.gameObject;
-		if (obj.tag == "Player") {
-			if(Vector3.Dot(obj.transform.forward, (obj.transform.position - transform.position)) > 0){
-				obj.GetComponent<PlayerManager>().hit();
-			}
-		}
+//		GameObject obj = collision.gameObject;
+//		if (obj.tag == "Player") {
+//			if(Vector3.Dot(obj.transform.forward, (obj.transform.position - transform.position)) > 0){
+//				obj.GetComponent<PlayerManager>().hit();
+//			}
+//		}
+	}
+	void OnTriggerEnter(Collider collider){
+		GameObject obj = collider.gameObject;
+		if (obj.tag == "Invincibility") {
+			invincibilityTimer = 5.0f;
+			invincible = true;
+			shield.SetActive(true);
+            Destroy(obj);
+        }
 	}
 }

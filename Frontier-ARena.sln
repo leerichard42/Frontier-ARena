@@ -41,7 +41,18 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
 																																														GlobalSection(MonoDevelopProperties) = preSolution
+=======
+<<<<<<< HEAD
+																																																	GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																														GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/Networking
+=======
+																																											GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/Networking
+>>>>>>> origin/Networking
 =======
 																																GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> origin/Networking
