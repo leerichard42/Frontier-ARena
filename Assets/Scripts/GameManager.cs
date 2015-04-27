@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Photon.MonoBehaviour {
 
 	public int unusedID;
 
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void updateID(){
+		Debug.Log (unusedID);
 		unusedID++;
 	}
 }

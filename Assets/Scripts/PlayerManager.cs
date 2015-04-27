@@ -24,8 +24,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-		playerID = gameManagerScript.unusedID;
-		gameManagerScript.updateID ();
+		playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
+		//gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -146,6 +146,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 			instaChargeTimer = 5.0f;
 			instaCharge = true;
 			Destroy(obj);
+		}
+	}
+
+	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
+		if (stream.isWriting) {
+			stream.SendNext (rigidbody.position);
+		} else {
+			rigidbody.position = (Vector3)stream.ReceiveNext ();
 		}
 	}
 
