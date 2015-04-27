@@ -152,8 +152,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
 		if (stream.isWriting) {
 			stream.SendNext (rigidbody.position);
+			stream.SendNext (rigidbody.rotation);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
+			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 		}
 	}
 
