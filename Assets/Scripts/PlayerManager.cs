@@ -32,17 +32,17 @@ public class PlayerManager : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if(photonView.isMine){]
-		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-		
-		if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
-		    && screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f){
-			checkMovement();
-			panel.GetComponent<Image>().color = good;
-		}
-		else{
-			panel.GetComponent<Image>().color = bad;
-			chargeTimer = 0;
+		if (photonView.isMine) {
+			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
+			
+			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
+				&& screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f) {
+				checkMovement ();
+				panel.GetComponent<Image> ().color = good;
+			} else {
+				panel.GetComponent<Image> ().color = bad;
+				chargeTimer = 0;
+			}
 		}
 	}
 
