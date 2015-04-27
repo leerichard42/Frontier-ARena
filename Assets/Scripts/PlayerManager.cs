@@ -9,6 +9,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color good = new Color(1f,1f,1f,50f/255f);
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
+	public int playerID;
 	public float waitTimer;
 	public bool stunned = false;
 	public float stunTime = 0.5f;
@@ -21,6 +22,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public GameObject shield;
 
 	void Start () {
+		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
+		playerID = gameManagerScript.unusedID;
+		gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -53,7 +58,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
 					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
-					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,this.gameObject);
+					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					waitTimer = stunTime;
 					blinksLeft--;
                 }
@@ -144,7 +149,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 		}
 	}
 
-	[RPC] void InvertRenderer(GameObject obj){
-		obj.GetComponentInChildren<Renderer>().enabled = !obj.GetComponentInChildren<Renderer>().enabled;
+	[RPC] void InvertRenderer(int id){
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach(GameObject player in players){
+			PlayerManager playerScript = (PlayerManager) player.GetComponent(typeof(PlayerManager));
+			if(playerScript.playerID == id){
+				player.GetComponentInChildren<Renderer>().enabled = !player.GetComponentInChildren<Renderer>().enabled;
+				break;
+			}
+		}
 	}
 }
