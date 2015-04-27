@@ -146,6 +146,7 @@
      <Compile Include="Assets\Scripts\DummyScript.cs" />
      <Compile Include="Assets\Scripts\HitboxScript.cs" />
      <Compile Include="Assets\Scripts\JoystickManager.cs" />
+     <Compile Include="Assets\Scripts\LanceScript.cs" />
      <Compile Include="Assets\Scripts\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\TestCollisionScript.cs" />

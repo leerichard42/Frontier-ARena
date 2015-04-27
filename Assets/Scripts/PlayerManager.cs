@@ -16,6 +16,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public float livesLeft = 3;
 	public bool invincible = false;
 	public float invincibilityTimer;
+	public bool instaCharge = false;
+	public float instaChargeTimer;
 	public GameObject shield;
 
 	void Start () {
@@ -40,6 +42,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 		}
 		else{
 			panel.GetComponent<Image>().color = bad;
+			chargeTimer = 0;
 		}
 	}
 
@@ -49,7 +52,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 			waitTimer -= Time.deltaTime;
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
-//					renderer.enabled = !renderer.enabled;
 					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
 					waitTimer = stunTime;
 					blinksLeft--;
@@ -73,6 +75,12 @@ public class PlayerManager : Photon.MonoBehaviour {
 					shield.SetActive(false);
 				}
 			}
+			if(instaCharge){
+				instaChargeTimer -= Time.deltaTime;
+				if(instaChargeTimer <= 0){
+					instaCharge = false;
+				}
+			}
 			if (rigidbody.velocity.magnitude < 1) {
 				if (rigidbody.velocity != Vector3.zero) {
 					rigidbody.velocity = Vector3.zero;
@@ -93,40 +101,32 @@ public class PlayerManager : Photon.MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Space) || (Input.touchCount > 0 
 				&& (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved))) {
-				chargeTimer += Time.deltaTime;
+				if(instaCharge){
+					chargeTimer = 2;
+				}
+				else{
+					chargeTimer += Time.deltaTime;
+				}
 			}
 			if (Input.GetKeyUp (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended)) {
 				Vector3 launchDir = cam.transform.forward;
 				launchDir.y = 0;
 				launchDir.Normalize ();
 				transform.LookAt (transform.position + launchDir);
-				rigidbody.velocity += launchDir * Mathf.Min (chargeTimer, 2) * 20;
+				rigidbody.velocity += launchDir * Mathf.Min (chargeTimer, 2) * 50;
 				chargeTimer = 0;
-//				Debug.Log ("Launch velocity: " + rigidbody.velocity.magnitude);
-			
 			}
 		}
 	}
 
 	public void hit(){
-//		Destroy (gameObject);
-//		Debug.Log ("hit");
 		if (!invincible && !stunned) {
-//			transform.position = Vector3.zero;
 			blinksLeft = 3;
 			waitTimer = stunTime;
 			stunned = true;
 		}
 	}
 
-	void OnCollisionEnter(Collision collision){
-//		GameObject obj = collision.gameObject;
-//		if (obj.tag == "Player") {
-//			if(Vector3.Dot(obj.transform.forward, (obj.transform.position - transform.position)) > 0){
-//				obj.GetComponent<PlayerManager>().hit();
-//			}
-//		}
-	}
 	void OnTriggerEnter(Collider collider){
 		GameObject obj = collider.gameObject;
 		if (obj.tag == "Invincibility") {
@@ -135,5 +135,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 			shield.SetActive(true);
             Destroy(obj);
         }
+
+		if (obj.tag == "Charge") {
+			instaChargeTimer = 5.0f;
+			instaCharge = true;
+			Destroy(obj);
+		}
 	}
 }

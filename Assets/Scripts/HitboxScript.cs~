@@ -16,8 +16,7 @@ public class HitboxScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider){
 		GameObject obj = collider.gameObject;
-		if (obj != player && obj.tag == "Player") {
-//			Debug.Log("HIT");
+		if (obj != player && obj.tag == "Weapon") {
 			player.GetComponent<PlayerManager>().hit();
 		}
 	}
