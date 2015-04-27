@@ -126,7 +126,7 @@ FlashPlayerPlugin_17_0_0_169.exe (4264)
     filedesc: Adobe Flash Player 17.0 r0
     filever:  17.0.0.169
     prodver:  17.0.0.169
-UnityBugReporter.exe (6460)
+UnityBugReporter.exe (8924)
     path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
     company:  Unity Technologies ApS
     product:  Unity Bug Reporter

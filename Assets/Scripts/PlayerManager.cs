@@ -52,7 +52,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 			waitTimer -= Time.deltaTime;
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
-					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,this.gameObject);
 					waitTimer = stunTime;
 					blinksLeft--;
                 }
@@ -141,5 +142,9 @@ public class PlayerManager : Photon.MonoBehaviour {
 			instaCharge = true;
 			Destroy(obj);
 		}
+	}
+
+	[RPC] void InvertRenderer(GameObject obj){
+		obj.GetComponentInChildren<Renderer>().enabled = !obj.GetComponentInChildren<Renderer>().enabled;
 	}
 }
