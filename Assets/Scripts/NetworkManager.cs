@@ -61,12 +61,11 @@ public class NetworkManager : Photon.MonoBehaviour {
 		roomsList = PhotonNetwork.GetRoomList();
 	}
 
-	/*
 	[RPC] void InstantiatePlayer(){
 		GameObject obj = PhotonNetwork.Instantiate (playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
 		obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
 		obj.transform.localScale = anchor.transform.localScale;
-	}*/
+	}
 
 	[RPC] void SetParent(){
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");

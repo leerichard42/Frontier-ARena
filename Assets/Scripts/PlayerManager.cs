@@ -24,9 +24,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-		if (photonView.isMine) {
-			playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
-		}
+		playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
 		//gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
@@ -42,8 +40,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 		if (photonView.isMine) {
 			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 			
-			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
-				&& screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f) {
+			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f) {
 				checkMovement ();
 				panel.GetComponent<Image> ().color = good;
 			} else {
@@ -59,8 +56,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 			waitTimer -= Time.deltaTime;
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
-					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
-					//photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
+					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					waitTimer = stunTime;
 					blinksLeft--;
                 }
@@ -155,13 +152,9 @@ public class PlayerManager : Photon.MonoBehaviour {
 		if (stream.isWriting) {
 			stream.SendNext (rigidbody.position);
 			stream.SendNext (rigidbody.rotation);
-			stream.SendNext(playerID);
-			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
-			playerID = (int)stream.ReceiveNext();
-			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
 		}
 	}
 
