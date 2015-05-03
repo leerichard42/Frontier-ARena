@@ -1,0 +1,91 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Microsoft Basic Render Driver (ID=0x8c)
+    Vendor:   Microsoft
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Qualcomm.Vuforia.UnityExtensions.dll (this message is harmless)
+Loading C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\Qualcomm.Vuforia.UnityExtensions.dll into Unity Child Domain
+- Completed reload, in  0.070 seconds
+desktop: 1920x1080 64Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Anthony\Documents\GitHub\Frontier-ARena\vuforia_networking_arena_Data\Managed\System.dll (this message is harmless)
+Setting BehaviourComponentFactory
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+QCAR initialization successful
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Could not initialize the tracker.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Could not initialize the tracker.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+SetHint
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+SetHint
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+SetHint
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Dataset FrontierARenaDatabase could not be loaded and cannot be activated.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+StartQCAR
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Using default scene scale for device: 1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Trackable Zinogre_Emblem lost
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+StopQCAR
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Component.GetComponentsInChildren[BackgroundPlaneAbstractBehaviour] (Boolean includeInactive) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Component.GetComponentsInChildren[BackgroundPlaneAbstractBehaviour] () [0x00000] in <filename unknown>:0 
+  at Vuforia.VideoBackgroundAbstractBehaviour.ResetBackgroundPlane (Boolean disable) [0x00000] in <filename unknown>:0 
+  at Vuforia.QCARAbstractBehaviour.ResetBackgroundPlane (Boolean disable) [0x00000] in <filename unknown>:0 
+  at Vuforia.QCARAbstractBehaviour.OnDisable () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Trackable Zinogre_Emblem lost
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

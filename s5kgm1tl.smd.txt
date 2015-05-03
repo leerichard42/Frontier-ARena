@@ -1,0 +1,87 @@
+﻿Merge remote-tracking branch 'origin/Networking' into Networking
+
+Conflicts:
+	Assets/Photon Unity Networking/Resources/Turtle.prefab
+	Assets/Scenes/vuforia_test_arena.unity
+	Assets/Scripts/PlayerManager.cs
+	Frontier-ARena-csharp.sln
+	Frontier-ARena.sln
+	Frontier-ARena.userprefs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Networking
+# Your branch and 'origin/Networking' have diverged,
+# and have 1 and 15 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Assembly-CSharp-Editor-vs.csproj
+#	modified:   Assembly-CSharp-Editor.csproj
+#	modified:   Assembly-CSharp-firstpass-vs.csproj
+#	modified:   Assembly-CSharp-firstpass.csproj
+#	modified:   Assembly-CSharp-vs.csproj
+#	modified:   Assembly-CSharp.csproj
+#	modified:   Assembly-UnityScript-Editor-firstpass-vs.unityproj
+#	modified:   Assembly-UnityScript-Editor-firstpass.unityproj
+#	modified:   Assembly-UnityScript-vs.unityproj
+#	modified:   Assembly-UnityScript.unityproj
+#	modified:   Assets/Scripts/PlayerManager.cs
+#	deleted:    Frontier ARena-csharp.sln
+#	deleted:    Frontier ARena.sln
+#	deleted:    Frontier ARena.userprefs
+#	new file:   Frontier-ARena-Networking-csharp.sln
+#	new file:   Frontier-ARena-Networking.sln
+#	modified:   Frontier-ARena-csharp.sln
+#	modified:   Frontier-ARena.sln
+#	modified:   Frontier-ARena.userprefs
+#	modified:   ProjectSettings/EditorBuildSettings.asset
+#	modified:   ProjectSettings/QualitySettings.asset
+#	modified:   ProjectSettings/TagManager.asset
+#	modified:   QCAR/somedata16
+#	modified:   sysinfo.txt
+#	new file:   vuforia_networking_arena.apk
+#	new file:   vuforia_networking_arena.exe
+#	new file:   vuforia_networking_arena_Data/Managed/Assembly-CSharp-firstpass.dll
+#	new file:   vuforia_networking_arena_Data/Managed/Assembly-CSharp.dll
+#	new file:   vuforia_networking_arena_Data/Managed/Assembly-UnityScript.dll
+#	new file:   vuforia_networking_arena_Data/Managed/Mono.Security.dll
+#	new file:   vuforia_networking_arena_Data/Managed/Photon3Unity3D.dll
+#	new file:   vuforia_networking_arena_Data/Managed/Qualcomm.Vuforia.UnityExtensions.dll
+#	new file:   vuforia_networking_arena_Data/Managed/System.Core.dll
+#	new file:   vuforia_networking_arena_Data/Managed/System.dll
+#	new file:   vuforia_networking_arena_Data/Managed/UnityEngine.UI.dll
+#	new file:   vuforia_networking_arena_Data/Managed/UnityEngine.dll
+#	new file:   vuforia_networking_arena_Data/Managed/mscorlib.dll
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/1.0/DefaultWsdlHelpGenerator.aspx
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/1.0/machine.config
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/2.0/Browsers/Compat.browser
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/2.0/machine.config
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/2.0/settings.map
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/2.0/web.config
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/browscap.ini
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/config
+#	new file:   vuforia_networking_arena_Data/Mono/etc/mono/mconfig/config.xml
+#	new file:   vuforia_networking_arena_Data/Mono/mono.dll
+#	new file:   vuforia_networking_arena_Data/PlayerConnectionConfigFile
+#	new file:   vuforia_networking_arena_Data/Plugins/Photon3Unity3D.dll
+#	new file:   vuforia_networking_arena_Data/Plugins/QCARWrapper.dll
+#	new file:   vuforia_networking_arena_Data/Resources/unity default resources
+#	new file:   vuforia_networking_arena_Data/Resources/unity_builtin_extra
+#	new file:   vuforia_networking_arena_Data/StreamingAssets/QCAR/FrontierARenaDatabase.dat
+#	new file:   vuforia_networking_arena_Data/StreamingAssets/QCAR/FrontierARenaDatabase.xml
+#	new file:   vuforia_networking_arena_Data/mainData
+#	new file:   vuforia_networking_arena_Data/output_log.txt
+#	new file:   vuforia_networking_arena_Data/resources.assets
+#	new file:   vuforia_networking_arena_Data/sharedassets0.assets
+#
+

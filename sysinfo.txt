@@ -21,91 +21,112 @@ User locale: en-US
 System locale: en-US
 
 Running processes:
-NvBackend.exe (4800)
+NvBackend.exe (992)
     path: C:\Program Files (x86)\NVIDIA Corporation\Update Core\NvBackend.exe
     company:  NVIDIA Corporation
     product:  NVIDIA GeForce Experience
     filedesc: NVIDIA GeForce Experience Backend
     filever:  16.18.9.0
     prodver:  16.18.9.0
-AvastUI.exe (4916)
+AvastUI.exe (5776)
     path: C:\Program Files\AVAST Software\Avast\AvastUI.exe
     company:  AVAST Software
     product:  avast! Antivirus 
     filedesc: avast! Antivirus
     filever:  9.0.2021.531
     prodver:  9.0.2021.531
-jusched.exe (4996)
+jusched.exe (6800)
     path: C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe
     company:  Oracle Corporation
     product:  Java(TM) Platform SE Auto Updater
     filedesc: Java(TM) Update Scheduler
     filever:  2.1.67.1
     prodver:  2.1.67.1
-UA.exe (4100)
+UA.exe (8752)
     path: C:\Users\Anthony\AppData\Roaming\VERIZON\UA_ar\UA.exe
     company:  SAMSUNG Electornics Co., Ltd.
     product:  UA
     filedesc: Verizon 2.0 UA for Android
     filever:  1.0.0.1
     prodver:  1.0.0.1
-firefox.exe (4280)
+firefox.exe (3524)
     path: C:\Program Files (x86)\Mozilla Firefox\firefox.exe
     company:  Mozilla Corporation
     product:  Firefox
     filedesc: Firefox
-    filever:  37.0.1.5570
-    prodver:  37.0.1.0
-plugin-container.exe (5420)
-    path: C:\Program Files (x86)\Mozilla Firefox\plugin-container.exe
-    company:  Mozilla Corporation
-    product:  Firefox
-    filedesc: Plugin Container for Firefox
-    filever:  37.0.1.5570
-    prodver:  37.0.1.0
-FlashPlayerPlugin_17_0_0_169.exe (5488)
-    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
-    company:  Adobe Systems, Inc.
-    product:  Shockwave Flash
-    filedesc: Adobe Flash Player 17.0 r0
-    filever:  17.0.0.169
-    prodver:  17.0.0.169
-FlashPlayerPlugin_17_0_0_169.exe (5504)
-    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
-    company:  Adobe Systems, Inc.
-    product:  Shockwave Flash
-    filedesc: Adobe Flash Player 17.0 r0
-    filever:  17.0.0.169
-    prodver:  17.0.0.169
-MonoDevelop.exe (772)
-    path: C:\Program Files (x86)\Unity\MonoDevelop\bin\MonoDevelop.exe
-    company:  
-    product:  MonoDevelop
-    filedesc: MonoDevelop
-    filever:  2.6.0.0
-    prodver:  2.6.0.0
-adb.exe (5304)
-    path: C:\Android\android-sdk\platform-tools\adb.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-GitHub.exe (6596)
-    path: C:\Users\Anthony\AppData\Local\Apps\2.0\JNV66RTL.GZ0\PCGVE56Y.42A\gith..tion_317444273a93ac29_0002.000d_7c798cfff9a06ed4\GitHub.exe
+    filever:  37.0.2.5583
+    prodver:  37.0.2.0
+Dropbox.exe (6216)
+    path: C:\Users\Anthony\AppData\Roaming\Dropbox\bin\Dropbox.exe
+    company:  Dropbox, Inc.
+    product:  Dropbox
+    filedesc: Dropbox
+    filever:  3.4.4.0
+    prodver:  1.0.0.1
+Agent.exe (9524)
+    path: C:\ProgramData\Battle.net\Agent\Agent.3918\Agent.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net Update Agent
+    filedesc: Battle.net Update Agent
+    filever:  1.18.1.3918
+    prodver:  1.18.1.3918
+Battle.net.exe (8252)
+    path: C:\Program Files (x86)\Battle.net\Battle.net.5669\Battle.net.exe
+    company:  Blizzard Entertainment
+    product:  Battle.net desktop app
+    filedesc: Battle.net desktop app
+    filever:  1.2.7.5669
+    prodver:  1.2.7.5669
+GitHub.exe (2880)
+    path: C:\Users\Anthony\AppData\Local\Apps\2.0\JNV66RTL.GZ0\PCGVE56Y.42A\gith..tion_317444273a93ac29_0002.000d_6a9b565322d28a14\GitHub.exe
     company:  GitHub, Inc.
     product:  GitHub for Windows
     filedesc: GitHub
-    filever:  2.13.1.2
-    prodver:  2.13.1.2
-ssh-agent.exe (4716)
+    filever:  2.13.2.4
+    prodver:  2.13.2.4
+ssh-agent.exe (9952)
     path: C:\Users\Anthony\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\ssh-agent.exe
     company:  
     product:  
     filedesc: 
     filever:  0.0.0.0
     prodver:  0.0.0.0
-UnityBugReporter.exe (3048)
+adb.exe (4252)
+    path: C:\Android\android-sdk\platform-tools\adb.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+bash.exe (7808)
+    path: C:\Users\Anthony\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\bash.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  0.0.0.0
+    prodver:  0.0.0.0
+plugin-container.exe (6064)
+    path: C:\Program Files (x86)\Mozilla Firefox\plugin-container.exe
+    company:  Mozilla Corporation
+    product:  Firefox
+    filedesc: Plugin Container for Firefox
+    filever:  37.0.2.5583
+    prodver:  37.0.2.0
+FlashPlayerPlugin_17_0_0_169.exe (8356)
+    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
+    company:  Adobe Systems, Inc.
+    product:  Shockwave Flash
+    filedesc: Adobe Flash Player 17.0 r0
+    filever:  17.0.0.169
+    prodver:  17.0.0.169
+FlashPlayerPlugin_17_0_0_169.exe (4264)
+    path: C:\WINDOWS\SysWOW64\Macromed\Flash\FlashPlayerPlugin_17_0_0_169.exe
+    company:  Adobe Systems, Inc.
+    product:  Shockwave Flash
+    filedesc: Adobe Flash Player 17.0 r0
+    filever:  17.0.0.169
+    prodver:  17.0.0.169
+UnityBugReporter.exe (8924)
     path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
     company:  Unity Technologies ApS
     product:  Unity Bug Reporter
