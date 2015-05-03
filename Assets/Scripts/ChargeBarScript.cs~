@@ -14,6 +14,7 @@ public class ChargeBarScript : MonoBehaviour {
 	void OnGUI () {
 		if (player) {
 			if (player.chargeTimer > 0) {
+
 				GUI.DrawTexture (new Rect (0, Screen.height - 50, Screen.width * player.chargeTimer / 2, 50), ChargeBarTexture, ScaleMode.StretchToFill, true, 0);
 			}
 		}

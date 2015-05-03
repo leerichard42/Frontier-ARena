@@ -104,6 +104,7 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\SupportLogger.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\TimeKeeper.cs" />
+     <Compile Include="Assets\PortalScript.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CloudRecoBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CylinderTargetBehaviour.cs" />
@@ -144,6 +145,7 @@
      <Compile Include="Assets\Scripts\ChargeBarScript.cs" />
      <Compile Include="Assets\Scripts\CustomInput.cs" />
      <Compile Include="Assets\Scripts\DummyScript.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HitboxScript.cs" />
      <Compile Include="Assets\Scripts\JoystickManager.cs" />
      <Compile Include="Assets\Scripts\LanceScript.cs" />

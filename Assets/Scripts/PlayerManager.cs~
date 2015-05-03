@@ -9,6 +9,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color good = new Color(1f,1f,1f,50f/255f);
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
+	public int playerID;
 	public float waitTimer;
 	public bool stunned = false;
 	public float stunTime = 0.5f;
@@ -19,8 +20,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public bool instaCharge = false;
 	public float instaChargeTimer;
 	public GameObject shield;
+	public Animator animController;
+	public GameObject arrow;
 
 	void Start () {
+		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
+		playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
+		//gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -28,21 +35,47 @@ public class PlayerManager : Photon.MonoBehaviour {
 		panel.GetComponent<Image>().color = bad;
 		shield = transform.FindChild ("Shield").gameObject;
 		shield.SetActive (false);
+		animController = GetComponent<Animator> ();
+		animController.SetBool ("Charging", false);
+		animController.SetBool ("Running", false);
+		animController.SetBool ("Hit", false);
+		arrow = transform.FindChild ("arrow").gameObject;
+		arrow.transform.parent = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		if(photonView.isMine){]
-		Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-		
-		if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
-		    && screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f){
-			checkMovement();
-			panel.GetComponent<Image>().color = good;
-		}
-		else{
-			panel.GetComponent<Image>().color = bad;
-			chargeTimer = 0;
+//		if (photonView.isMine) {
+			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
+			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
+			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f) {
+				checkMovement ();
+				panel.GetComponent<Image> ().color = good;
+			} else {
+				panel.GetComponent<Image> ().color = bad;
+				chargeTimer = 0;
+				checkRotation ();
+			}
+//		}
+	}
+
+	public void checkRotation(){
+		Vector3 launchDir = cam.transform.forward;
+		launchDir.y = 0;
+		launchDir.Normalize ();
+		arrow.transform.LookAt (arrow.transform.position + launchDir);
+
+		if (rigidbody.velocity.magnitude < 2) {
+			animController.SetBool("Running", false);
+			if (rigidbody.velocity != Vector3.zero) {
+				rigidbody.velocity = Vector3.zero;
+				rigidbody.angularVelocity = Vector3.zero;
+			} else {
+				transform.LookAt (transform.position + launchDir);
+				
+			}
+		} else {
+			transform.LookAt (transform.position + rigidbody.velocity);
 		}
 	}
 
@@ -52,9 +85,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 			waitTimer -= Time.deltaTime;
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
-					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					waitTimer = stunTime;
 					blinksLeft--;
+					animController.SetBool("Hit", false);
                 }
 				else{
 					livesLeft--;
@@ -81,23 +116,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 					instaCharge = false;
 				}
 			}
-			if (rigidbody.velocity.magnitude < 1) {
-				if (rigidbody.velocity != Vector3.zero) {
-					rigidbody.velocity = Vector3.zero;
-					rigidbody.angularVelocity = Vector3.zero;
-				} else {
-					Vector3 launchDir = cam.transform.forward;
-					launchDir.y = 0;
-					launchDir.Normalize ();
-					transform.LookAt (transform.position + launchDir);
-				
-				}
-			} else {
-				transform.LookAt (transform.position + rigidbody.velocity);
-			}
+			checkRotation();
 		
 			if (Input.GetKeyDown (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)) {
 				chargeTimer = 0;
+				animController.SetBool("Charging", true);
 			}
 			if (Input.GetKey (KeyCode.Space) || (Input.touchCount > 0 
 				&& (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved))) {
@@ -109,11 +132,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 				}
 			}
 			if (Input.GetKeyUp (KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended)) {
+				animController.SetBool("Running", true);
+				animController.SetBool("Charging", false);
 				Vector3 launchDir = cam.transform.forward;
 				launchDir.y = 0;
 				launchDir.Normalize ();
 				transform.LookAt (transform.position + launchDir);
-				rigidbody.velocity += launchDir * Mathf.Min (chargeTimer, 2) * 50;
+				rigidbody.velocity += launchDir * Mathf.Min (chargeTimer, 2) * 100;
 				chargeTimer = 0;
 			}
 		}
@@ -121,6 +146,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	public void hit(){
 		if (!invincible && !stunned) {
+			animController.SetBool("Hit", true);
 			blinksLeft = 3;
 			waitTimer = stunTime;
 			stunned = true;
@@ -140,6 +166,27 @@ public class PlayerManager : Photon.MonoBehaviour {
 			instaChargeTimer = 5.0f;
 			instaCharge = true;
 			Destroy(obj);
+		}
+	}
+
+	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
+		if (stream.isWriting) {
+			stream.SendNext (rigidbody.position);
+			stream.SendNext (rigidbody.rotation);
+		} else {
+			rigidbody.position = (Vector3)stream.ReceiveNext ();
+			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
+		}
+	}
+
+	[RPC] void InvertRenderer(int id){
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach(GameObject player in players){
+			PlayerManager playerScript = (PlayerManager) player.GetComponent(typeof(PlayerManager));
+			if(playerScript.playerID == id){
+				player.GetComponentInChildren<Renderer>().enabled = !player.GetComponentInChildren<Renderer>().enabled;
+				break;
+			}
 		}
 	}
 }

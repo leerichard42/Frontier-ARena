@@ -70,7 +70,6 @@ public class NetworkManager : Photon.MonoBehaviour {
 	[RPC] void SetParent(){
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach(GameObject player in players){
-			Debug.Log("hi");
 			player.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
 			player.transform.localScale = anchor.transform.localScale;
 		}
