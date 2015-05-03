@@ -26,13 +26,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-<<<<<<< HEAD
-		playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
-=======
+
 		if (photonView.isMine) {
 			playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
 		}
->>>>>>> origin/Networking
 		//gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
@@ -51,24 +48,17 @@ public class PlayerManager : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
 //		if (photonView.isMine) {
 			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
-			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f) {
-=======
-		if (photonView.isMine) {
-			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
-			
+
 			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
 				&& screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f) {
->>>>>>> origin/Networking
 				checkMovement ();
 				panel.GetComponent<Image> ().color = good;
 			} else {
 				panel.GetComponent<Image> ().color = bad;
 				chargeTimer = 0;
-<<<<<<< HEAD
 				checkRotation ();
 			}
 //		}
@@ -91,10 +81,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 			}
 		} else {
 			transform.LookAt (transform.position + rigidbody.velocity);
-=======
-			}
->>>>>>> origin/Networking
 		}
+
 	}
 
 	public void checkMovement(){
@@ -103,13 +91,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 			waitTimer -= Time.deltaTime;
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
-<<<<<<< HEAD
 					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
-					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
-=======
+//					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
 					//photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
->>>>>>> origin/Networking
 					waitTimer = stunTime;
 					blinksLeft--;
 					animController.SetBool("Hit", false);
@@ -196,11 +181,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 		if (stream.isWriting) {
 			stream.SendNext (rigidbody.position);
 			stream.SendNext (rigidbody.rotation);
-<<<<<<< HEAD
-		} else {
-			rigidbody.position = (Vector3)stream.ReceiveNext ();
-			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
-=======
 			stream.SendNext(playerID);
 			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
 		} else {
@@ -208,7 +188,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
->>>>>>> origin/Networking
 		}
 	}
 
