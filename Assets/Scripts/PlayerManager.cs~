@@ -13,7 +13,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public float waitTimer;
 	public bool stunned = false;
 	public float stunTime = 0.5f;
-	public float blinksLeft = 4;
+	public float blinksLeft = 6;
 	public float livesLeft = 3;
 	public bool invincible = false;
 	public float invincibilityTimer;
@@ -22,6 +22,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public GameObject shield;
 	public Animator animController;
 	public GameObject arrow;
+	public Color horseColor;
 
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
@@ -44,6 +45,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 		animController.SetBool ("Hit", false);
 		arrow = transform.FindChild ("arrow").gameObject;
 		arrow.transform.parent = null;
+		horseColor = GetComponentInChildren<Renderer> ().material.color;
 	}
 	
 	// Update is called once per frame
@@ -93,17 +95,25 @@ public class PlayerManager : Photon.MonoBehaviour {
 				if(blinksLeft > 0){
 					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
 //					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
-					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+
+//					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
+					if(GetComponentInChildren<Renderer>().material.color == horseColor){
+						GetComponentInChildren<Renderer>().material.color = Color.red;
+					}
+					else{
+						GetComponentInChildren<Renderer>().material.color = horseColor;
+					}
+
 					//photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					waitTimer = stunTime;
 					blinksLeft--;
 					animController.SetBool("Hit", false);
                 }
 				else{
-					livesLeft--;
+					GetComponentInChildren<Renderer>().material.color = horseColor;
+					
 					if(livesLeft > 0){
 						stunned = false;
-						GetComponentInChildren<Renderer>().enabled = true;
 					}
 					else{
 						gameObject.SetActive(false);
@@ -154,6 +164,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	public void hit(){
 		if (!invincible && !stunned) {
+			livesLeft--;
 			animController.SetBool("Hit", true);
 			blinksLeft = 3;
 			waitTimer = stunTime;

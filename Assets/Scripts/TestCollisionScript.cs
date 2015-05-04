@@ -14,6 +14,6 @@ public class TestCollisionScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		Debug.Log ("Hit: " + collision.gameObject.name + "," + gameObject.name);
+//		Debug.Log ("Hit: " + collision.gameObject.name + "," + gameObject.name);
 	}
 }
