@@ -27,11 +27,9 @@ public class PlayerManager : Photon.MonoBehaviour {
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-
 		if (photonView.isMine) {
-			playerID = PhotonNetwork.player.ID;//gameManagerScript.unusedID;
+			playerID = PhotonNetwork.player.ID;
 		}
-		//gameManagerScript.updateID ();
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -50,7 +48,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if (photonView.isMine) {
+		if (photonView.isMine) {
 			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
 
@@ -63,7 +61,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 				chargeTimer = 0;
 				checkRotation ();
 			}
-//		}
+		}
 	}
 
 	public void checkRotation(){
@@ -94,17 +92,12 @@ public class PlayerManager : Photon.MonoBehaviour {
 			if(waitTimer <= 0){
 				if(blinksLeft > 0){
 					//GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
-//					photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
-
-//					GetComponentInChildren<Renderer>().enabled = !GetComponentInChildren<Renderer>().enabled;
 					if(GetComponentInChildren<Renderer>().material.color == horseColor){
 						GetComponentInChildren<Renderer>().material.color = Color.red;
 					}
 					else{
 						GetComponentInChildren<Renderer>().material.color = horseColor;
 					}
-
-					//photonView.RPC("InvertRenderer",PhotonTargets.AllBufferedViaServer,playerID);
 					waitTimer = stunTime;
 					blinksLeft--;
 					animController.SetBool("Hit", false);
@@ -197,23 +190,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (rigidbody.position);
 			stream.SendNext (rigidbody.rotation);
 			stream.SendNext(playerID);
-			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
+			stream.SendNext (GetComponentInChildren<Renderer>().material.color);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
-			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
+			GetComponentInChildren<Renderer>().material.color = (Color)stream.ReceiveNext();
 		}
 	}
 
-	[RPC] void InvertRenderer(int id){
-		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
-		foreach(GameObject player in players){
-			PlayerManager playerScript = (PlayerManager) player.GetComponent(typeof(PlayerManager));
-			if(playerScript.playerID == id){
-				player.GetComponentInChildren<Renderer>().enabled = !player.GetComponentInChildren<Renderer>().enabled;
-				break;
-			}
-		}
-	}
 }

@@ -7,12 +7,15 @@ public class NetworkManager : Photon.MonoBehaviour {
 	private const string roomName = "RoomName";
 	private RoomInfo[] roomsList;
 	public GameObject anchor;
+	public int maxPlayers = 4;
 	
 	public GameObject playerPrefab;
 
 	// Use this for initialization
 	void Start () {
+		Screen.orientation = ScreenOrientation.Landscape;
 		PhotonNetwork.ConnectUsingSettings ("0.1");
+		PhotonNetwork.automaticallySyncScene = true;
 	}
 	
 	// Update is called once per frame
@@ -50,8 +53,15 @@ public class NetworkManager : Photon.MonoBehaviour {
 				for (int i = 0; i < roomsList.Length; i++)
 				{
 					if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
-						PhotonNetwork.JoinRoom(roomsList[i].name);
+						if(PhotonNetwork.countOfPlayers < maxPlayers)
+							PhotonNetwork.JoinRoom(roomsList[i].name);
 				}
+			}
+		}
+		else if(PhotonNetwork.isMasterClient)
+		{
+			if(GUI.Button (new Rect(100, 100, 250, 100), "Start Game")){
+				PhotonNetwork.LoadLevel ("vuforia_test_arena");
 			}
 		}
 	}
@@ -59,12 +69,6 @@ public class NetworkManager : Photon.MonoBehaviour {
 	void OnReceivedRoomListUpdate()
 	{
 		roomsList = PhotonNetwork.GetRoomList();
-	}
-
-	[RPC] void InstantiatePlayer(){
-		GameObject obj = PhotonNetwork.Instantiate (playerPrefab.name, anchor.transform.position, Quaternion.identity, 0);
-		obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
-		obj.transform.localScale = anchor.transform.localScale;
 	}
 
 	[RPC] void SetParent(){
