@@ -55,7 +55,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
 
 			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
-				&& screenPos.y < cam.pixelHeight * .75f && screenPos.y > cam.pixelHeight * .25f) {
+				&& screenPos.y < cam.pixelHeight && screenPos.y > 0f) {
 				checkMovement ();
 				panel.GetComponent<Image> ().color = good;
 			} else {
@@ -174,17 +174,21 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider){
 		GameObject obj = collider.gameObject;
-		if (obj.tag == "Invincibility") {
-			invincibilityTimer = 5.0f;
-			invincible = true;
-			shield.SetActive(true);
-            Destroy(obj);
-        }
-
-		if (obj.tag == "Charge") {
-			instaChargeTimer = 5.0f;
-			instaCharge = true;
-			Destroy(obj);
+		if (obj.tag == "PowerUp") {
+			PowerupScript powerupscript = obj.GetComponent<PowerupScript>();
+			if (powerupscript.state == 1){
+				powerupscript.state = 0;
+				invincibilityTimer = 5.0f;
+				invincible = true;
+				shield.SetActive(true);
+				print ("invincible");
+			}
+			else if(powerupscript.state == 2){
+				powerupscript.state = 0;
+				instaChargeTimer = 5.0f;
+				instaCharge = true;
+				print ("instant charge");
+			}
 		}
 	}
 
