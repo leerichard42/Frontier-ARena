@@ -190,12 +190,16 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (rigidbody.position);
 			stream.SendNext (rigidbody.rotation);
 			stream.SendNext(playerID);
-			stream.SendNext (GetComponentInChildren<Renderer>().material.color);
+			Color c = GetComponentInChildren<Renderer>().material.color;
+			Vector3 tempcolor = new Vector3(c.r, c.g, c.b);
+			stream.SendNext (tempcolor);
+			stream.SendNext (c.a);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
-			GetComponentInChildren<Renderer>().material.color = (Color)stream.ReceiveNext();
+			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
+			GetComponentInChildren<Renderer>().material.color = new Color(tempcolor.x,tempcolor.y,tempcolor.z,(float)stream.ReceiveNext ());
 		}
 	}
 
