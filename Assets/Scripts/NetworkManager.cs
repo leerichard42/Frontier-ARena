@@ -6,16 +6,19 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	private const string roomName = "RoomName";
 	private RoomInfo[] roomsList;
-	public GameObject anchor;
+	//public GameObject anchor;
 	public int maxPlayers = 4;
+	public bool isPlayer = false; //true = player, false = spectator
+	public bool inGame = false;
 	
-	public GameObject playerPrefab;
+	//public GameObject playerPrefab;
 
 	// Use this for initialization
 	void Start () {
 		Screen.orientation = ScreenOrientation.Landscape;
 		PhotonNetwork.ConnectUsingSettings ("0.1");
 		PhotonNetwork.automaticallySyncScene = true;
+		DontDestroyOnLoad (transform.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -44,21 +47,29 @@ public class NetworkManager : Photon.MonoBehaviour {
 		else if (PhotonNetwork.room == null)
 		{
 			// Create Room
-			if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+			if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server")){
+				isPlayer = true;
 				PhotonNetwork.CreateRoom(roomName + Guid.NewGuid().ToString("N"), true, true, 5);
-			
+			}
 			// Join Room
 			if (roomsList != null)
 			{
 				for (int i = 0; i < roomsList.Length; i++)
 				{
-					if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].name))
-						if(PhotonNetwork.countOfPlayers < maxPlayers)
+					if(PhotonNetwork.countOfPlayers < maxPlayers){
+						if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join Room " + i)){
+							isPlayer = true;
 							PhotonNetwork.JoinRoom(roomsList[i].name);
+						}
+					}
+					if (GUI.Button(new Rect(500, 250 + (110 * i), 250, 100), "Spectate Room " + i)){
+						isPlayer = false;
+						PhotonNetwork.JoinRoom(roomsList[i].name);
+					}
 				}
 			}
 		}
-		else if(PhotonNetwork.isMasterClient)
+		else if(PhotonNetwork.isMasterClient && !inGame)
 		{
 			if(GUI.Button (new Rect(100, 100, 250, 100), "Start Game")){
 				PhotonNetwork.LoadLevel ("vuforia_test_arena");
@@ -71,12 +82,13 @@ public class NetworkManager : Photon.MonoBehaviour {
 		roomsList = PhotonNetwork.GetRoomList();
 	}
 
+	/*
 	[RPC] void SetParent(){
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach(GameObject player in players){
 			player.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
 			player.transform.localScale = anchor.transform.localScale;
 		}
-	}
+	}*/
 	
 }

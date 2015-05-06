@@ -142,6 +142,7 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WordBehaviour.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ChargeBarScript.cs" />
+     <Compile Include="Assets\Scripts\ConveyorScript.cs" />
      <Compile Include="Assets\Scripts\CustomInput.cs" />
      <Compile Include="Assets\Scripts\DummyScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
