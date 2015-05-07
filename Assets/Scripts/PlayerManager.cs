@@ -110,6 +110,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 					}
 					else{
 						gameObject.SetActive(false);
+						arrow.SetActive(false);
 					}
 				}
 			}
