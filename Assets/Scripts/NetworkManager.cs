@@ -10,6 +10,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 	public int maxPlayers = 4;
 	public bool isPlayer = false; //true = player, false = spectator
 	public bool inGame = false;
+	public int map = -1;
 	
 	//public GameObject playerPrefab;
 
@@ -40,39 +41,44 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	void OnGUI()
 	{
-		if (!PhotonNetwork.connected)
-		{
-			GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-		}
-		else if (PhotonNetwork.room == null)
-		{
+		if (!PhotonNetwork.connected) {
+			GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
+		} else if (PhotonNetwork.room == null) {
 			// Create Room
-			if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server")){
+			if (GUI.Button (new Rect (100, 100, 250, 100), "Start Server")) {
 				isPlayer = true;
-				PhotonNetwork.CreateRoom(roomName + Guid.NewGuid().ToString("N"), true, true, 5);
+				PhotonNetwork.CreateRoom (roomName + Guid.NewGuid ().ToString ("N"), true, true, 5);
 			}
 			// Join Room
-			if (roomsList != null)
-			{
-				for (int i = 0; i < roomsList.Length; i++)
-				{
-					if(PhotonNetwork.countOfPlayers < maxPlayers){
-						if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join Room " + i)){
+			if (roomsList != null) {
+				for (int i = 0; i < roomsList.Length; i++) {
+					if (PhotonNetwork.countOfPlayers < maxPlayers) {
+						if (GUI.Button (new Rect (100, 250 + (110 * i), 250, 100), "Join Room " + i)) {
 							isPlayer = true;
-							PhotonNetwork.JoinRoom(roomsList[i].name);
+							PhotonNetwork.JoinRoom (roomsList [i].name);
 						}
 					}
-					if (GUI.Button(new Rect(500, 250 + (110 * i), 250, 100), "Spectate Room " + i)){
+					if (GUI.Button (new Rect (500, 250 + (110 * i), 250, 100), "Spectate Room " + i)) {
 						isPlayer = false;
-						PhotonNetwork.JoinRoom(roomsList[i].name);
+						PhotonNetwork.JoinRoom (roomsList [i].name);
 					}
 				}
+			}
+		} else if (PhotonNetwork.isMasterClient && !inGame && map < 0) {
+			if(GUI.Button (new Rect(100, 100, 250, 100), "Arena")){
+				map = 1;
+			}
+			if(GUI.Button (new Rect(500, 100, 250, 100), "Platformer")){
+				map = 2;
+			}
+			if(GUI.Button (new Rect(900, 100, 250, 100), "Squiggly")){
+				map = 3;
 			}
 		}
 		else if(PhotonNetwork.isMasterClient && !inGame)
 		{
 			if(GUI.Button (new Rect(100, 100, 250, 100), "Start Game")){
-				PhotonNetwork.LoadLevel ("vuforia_test_arena");
+				PhotonNetwork.LoadLevel (map);
 			}
 		}
 	}
