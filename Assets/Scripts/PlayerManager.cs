@@ -25,11 +25,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public Color horseColor;
 
 	void Start () {
-//		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
-//		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-//		if (photonView.isMine) {
-//			playerID = PhotonNetwork.player.ID;
-//		}
+		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
+		if (photonView.isMine) {
+			playerID = PhotonNetwork.player.ID;
+		}
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -48,7 +48,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if (photonView.isMine) {
+		if (photonView.isMine) {
 			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
 
@@ -61,7 +61,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 				chargeTimer = 0;
 				checkRotation ();
 			}
-//		}
+		}
 	}
 
 	public void checkRotation(){
