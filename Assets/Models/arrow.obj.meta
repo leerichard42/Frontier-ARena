@@ -1,48 +1,15 @@
 fileFormatVersion: 2
-guid: bc30023aea5e69341b8727f7e5d081c4
+guid: 7df278b24a9e9c943ba66a5bbe35f50f
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube1
-    100004: pCube2
-    100006: pCube3
-    100008: pCube4
-    100010: pCube5
-    100012: pCube6
-    100014: pCube7
-    100016: place3dTexture1
-    100018: place3dTexture2
-    100020: polySurface1
-    100022: transform1
-    100024: transform2
-    100026: transform3
-    100028: transform4
-    100030: transform5
-    100032: transform6
+    100002: default
     400000: //RootNode
-    400002: pCube1
-    400004: pCube2
-    400006: pCube3
-    400008: pCube4
-    400010: pCube5
-    400012: pCube6
-    400014: pCube7
-    400016: place3dTexture1
-    400018: place3dTexture2
-    400020: polySurface1
-    400022: transform1
-    400024: transform2
-    400026: transform3
-    400028: transform4
-    400030: transform5
-    400032: transform6
-    2300000: pCube7
-    2300002: polySurface1
-    3300000: pCube7
-    3300002: polySurface1
-    4300000: polySurface1
-    4300002: pCube7
+    400002: default
+    2300000: default
+    3300000: default
+    4300000: default
     9500000: //RootNode
   materials:
     importMaterials: 1
