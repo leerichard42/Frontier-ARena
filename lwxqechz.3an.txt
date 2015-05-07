@@ -1,0 +1,92 @@
+﻿Merge remote-tracking branch 'origin/Networking' into Networking
+
+Conflicts:
+	Frontier-ARena.userprefs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Networking
+# Your branch and 'origin/Networking' have diverged,
+# and have 1 and 8 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Assembly-CSharp-Editor-vs.csproj
+#	modified:   Assembly-CSharp-Editor.csproj
+#	modified:   Assembly-CSharp-firstpass-vs.csproj
+#	modified:   Assembly-CSharp-firstpass.csproj
+#	modified:   Assembly-CSharp-vs.csproj
+#	modified:   Assembly-CSharp.csproj
+#	modified:   Assembly-UnityScript-Editor-firstpass-vs.unityproj
+#	modified:   Assembly-UnityScript-Editor-firstpass.unityproj
+#	modified:   Assembly-UnityScript-vs.unityproj
+#	modified:   Assembly-UnityScript.unityproj
+#	modified:   Assets/Materials/Ground.mat
+#
+# Changes not staged for commit:
+#	modified:   Assets/Models/arrow.obj.meta
+#	modified:   Assets/Photon Unity Networking/Resources/PhotonServerSettings.asset
+#	modified:   Assets/Photon Unity Networking/Resources/Turtle.prefab
+#	deleted:    Assets/PortalScript.cs
+#	deleted:    Assets/PortalScript.cs.meta
+#	deleted:    Assets/Prefabs/InstaCharge.prefab
+#	deleted:    Assets/Prefabs/InstaCharge.prefab.meta
+#	deleted:    Assets/Prefabs/Invincibility.prefab
+#	deleted:    Assets/Prefabs/Invincibility.prefab.meta
+#	modified:   Assets/Scenes/lobby.unity
+#	modified:   Assets/Scenes/vuforia_test_arena.unity
+#	modified:   Assets/Scripts/GameManager.cs
+#	modified:   Assets/Scripts/NetworkManager.cs
+#	modified:   Assets/Scripts/PlayerManager.cs
+#	modified:   Frontier-ARena-csharp.sln
+#	modified:   Frontier-ARena.sln
+#	modified:   Frontier-ARena.userprefs
+#	modified:   ProjectSettings/EditorBuildSettings.asset
+#	modified:   ProjectSettings/TagManager.asset
+#	modified:   QCAR/somedata16
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/1.0/DefaultWsdlHelpGenerator.aspx
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/1.0/machine.config
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/2.0/Browsers/Compat.browser
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/2.0/machine.config
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/2.0/settings.map
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/2.0/web.config
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/browscap.ini
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/config
+#	deleted:    vuforia_networking_arena_Data/Mono/etc/mono/mconfig/config.xml
+#	deleted:    vuforia_networking_arena_Data/PlayerConnectionConfigFile
+#	deleted:    vuforia_networking_arena_Data/Resources/unity default resources
+#	deleted:    vuforia_networking_arena_Data/Resources/unity_builtin_extra
+#	deleted:    vuforia_networking_arena_Data/StreamingAssets/QCAR/FrontierARenaDatabase.dat
+#	deleted:    vuforia_networking_arena_Data/StreamingAssets/QCAR/FrontierARenaDatabase.xml
+#	deleted:    vuforia_networking_arena_Data/mainData
+#	deleted:    vuforia_networking_arena_Data/output_log.txt
+#	deleted:    vuforia_networking_arena_Data/resources.assets
+#	deleted:    vuforia_networking_arena_Data/sharedassets0.assets
+#
+# Untracked files:
+#	Assets/Prefabs/Conveyor.prefab
+#	Assets/Prefabs/Conveyor.prefab.meta
+#	Assets/Prefabs/powerup.prefab
+#	Assets/Prefabs/powerup.prefab.meta
+#	Assets/Scenes/Map_Platformer.unity
+#	Assets/Scenes/Map_Platformer.unity.meta
+#	Assets/Scenes/Map_Squiggly.unity
+#	Assets/Scenes/Map_Squiggly.unity.meta
+#	Assets/Scripts/ConveyorScript.cs
+#	Assets/Scripts/ConveyorScript.cs.meta
+#	Assets/Scripts/PortalScript.cs
+#	Assets/Scripts/PortalScript.cs.meta
+#	Assets/Scripts/PowerupScript.cs
+#	Assets/Scripts/PowerupScript.cs.meta
+#	with_lobby.apk
+#
+
