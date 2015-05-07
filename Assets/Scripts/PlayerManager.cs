@@ -23,13 +23,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public Animator animController;
 	public GameObject arrow;
 	public Color horseColor;
+	public ChargeBarScript focusScript;
 
 	void Start () {
-//		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
-//		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
-//		if (photonView.isMine) {
-//			playerID = PhotonNetwork.player.ID;
-//		}
+		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
+		if (photonView.isMine) {
+			playerID = PhotonNetwork.player.ID;
+		}
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
@@ -44,11 +45,12 @@ public class PlayerManager : Photon.MonoBehaviour {
 		arrow = transform.FindChild ("arrow").gameObject;
 		arrow.transform.parent = null;
 		horseColor = GetComponentInChildren<Renderer> ().material.color;
+		focusScript = GetComponent<ChargeBarScript> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		if (photonView.isMine) {
+		if (photonView.isMine) {
 			Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 			arrow.transform.position = new Vector3 (transform.position.x, arrow.transform.position.y, transform.position.z);
 
@@ -56,12 +58,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 				&& screenPos.y < cam.pixelHeight && screenPos.y > 0f) {
 				checkMovement ();
 				panel.GetComponent<Image> ().color = good;
+				focusScript.inFocus = true;
 			} else {
 				panel.GetComponent<Image> ().color = bad;
+				focusScript.inFocus = false;
 				chargeTimer = 0;
 				checkRotation ();
 			}
-//		}
+		}
 	}
 
 	public void checkRotation(){
