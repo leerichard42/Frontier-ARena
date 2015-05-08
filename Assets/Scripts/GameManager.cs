@@ -48,16 +48,16 @@ public class GameManager : Photon.MonoBehaviour {
 		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 		foreach (GameObject obj in players){
 			PlayerManager script = obj.GetComponent<PlayerManager>();
-			if (script.playerID == 1){
+			if (script.playerID == 0){
 				score1.GetComponent<Text>().text = "1. Player 1: " + script.score;
 			}
-			else if (script.playerID == 2){
+			else if (script.playerID == 1){
 				score1.GetComponent<Text>().text = "2. Player 2: " + script.score;
 			}
-			else if (script.playerID == 3){
+			else if (script.playerID == 2){
 				score1.GetComponent<Text>().text = "3. Player 3: " + script.score;
 			}
-			else if (script.playerID == 4){
+			else if (script.playerID == 3){
 				score1.GetComponent<Text>().text = "4. Player 4: " + script.score;
 			}
 		}
