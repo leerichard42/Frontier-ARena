@@ -111,7 +111,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	public void checkMovement(){
 		if (livesLeft <= 0) {
-			gameObject.SetActive(false);
+			//gameObject.SetActive(false);
+			setInactivePlayer();
 			arrow.SetActive(false);
 		}
 		if (stunned) {
@@ -252,6 +253,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 	private void SyncedMovement(){
 		syncTime += Time.deltaTime;
 		rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+	}
+
+	[RPC] void setInactivePlayer(){
+		if (photonView.isMine) {
+			photonView.RPC ("setInactivePlayer", PhotonTargets.OthersBuffered);
+		}
+		gameObject.SetActive (false);
 	}
 
 }
