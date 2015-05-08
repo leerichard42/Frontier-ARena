@@ -26,6 +26,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public Color horseColor;
 	public ChargeBarScript focusScript;
 
+	private float lastSynchronizationTime = 0f;
+	private float syncDelay = 0f;
+	private float syncTime = 0f;
+	private Vector3 syncStartPosition = transform.position;
+	private Vector3 syncEndPosition = transform.position;
+
+
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
@@ -72,6 +79,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 				checkRotation ();
 			}
 		} else {
+			SyncedMovement();
 			if(arrow){
 				arrow.SetActive(false);
 				Destroy(arrow);
@@ -210,8 +218,9 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
 		if (stream.isWriting) {
-			stream.SendNext (transform.position);
-			stream.SendNext (transform.rotation);
+			stream.SendNext (rigidbody.position);
+			stream.SendNext(rigidbody.velocity);
+			stream.SendNext (rigidbody.rotation);
 			stream.SendNext(playerID);
 			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
 			Color c = GetComponentInChildren<Renderer>().material.color;
@@ -222,8 +231,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (livesLeft);
 			stream.SendNext (score);
 		} else {
-			transform.position = (Vector3)stream.ReceiveNext ();
-			transform.rotation = (Quaternion)stream.ReceiveNext();
+			Vector3 syncPosition = (Vector3)stream.ReceiveNext();
+			Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
+			syncTime = 0f;
+			syncDelay = Time.time - lastSynchronizationTime;
+			lastSynchronizationTime = Time.time;
+			syncEndPosition = syncPosition + syncVelocity * syncDelay;
+			syncStartPosition = rigidbody.position;
+			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
 			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
@@ -232,6 +247,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 			livesLeft = (int)stream.ReceiveNext();
 			score = (int)stream.ReceiveNext();
 		}
+	}
+
+	private void SyncedMovement(){
+		syncTime += Time.deltaTime;
+		rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 	}
 
 }

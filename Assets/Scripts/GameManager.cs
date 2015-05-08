@@ -27,8 +27,8 @@ public class GameManager : Photon.MonoBehaviour {
 			GameObject obj = PhotonNetwork.Instantiate (playerPrefab.name, spawn_point.transform.position, spawn_point.transform.rotation, 0);
 			obj.transform.parent = GameObject.FindGameObjectWithTag ("MainTarget").transform;
 			obj.transform.localScale = spawn_point.transform.localScale;
-			photonView.RPC ("SetParent", PhotonTargets.AllViaServer);
 		}
+		photonView.RPC ("SetParent", PhotonTargets.AllViaServer);
 
 		// UI
 		IDtext = GameObject.Find("PlayerID");
