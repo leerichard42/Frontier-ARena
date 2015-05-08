@@ -127,7 +127,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 					}
 					waitTimer = stunTime;
 					blinksLeft--;
-					animController.SetBool("Hit", false);
                 }
 				else{
 					GetComponentInChildren<Renderer>().material.color = horseColor;
