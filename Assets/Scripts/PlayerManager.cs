@@ -29,11 +29,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 	private float lastSynchronizationTime = 0f;
 	private float syncDelay = 0f;
 	private float syncTime = 0f;
-	private Vector3 syncStartPosition = transform.position;
-	private Vector3 syncEndPosition = transform.position;
+	private Vector3 syncStartPosition;
+	private Vector3 syncEndPosition; 
 
 
 	void Start () {
+		syncStartPosition = transform.position;
+		syncEndPosition = transform.position;
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManager.GetComponent (typeof(GameManager));
 		if (photonView.isMine) {
