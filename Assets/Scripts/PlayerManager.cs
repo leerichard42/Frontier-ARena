@@ -34,8 +34,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
-		panel = GameObject.FindGameObjectWithTag("MainPanel");
-		panel.GetComponent<Image>().color = bad;
+//		panel = GameObject.FindGameObjectWithTag("MainPanel");
+//		panel.GetComponent<Image>().color = bad;
 		shield = transform.FindChild ("Shield").gameObject;
 		shield.SetActive (false);
 		animController = GetComponent<Animator> ();
@@ -57,10 +57,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
 				&& screenPos.y < cam.pixelHeight && screenPos.y > 0f) {
 				checkMovement ();
-				panel.GetComponent<Image> ().color = good;
+//				panel.GetComponent<Image> ().color = good;
 				focusScript.inFocus = true;
 			} else {
-				panel.GetComponent<Image> ().color = bad;
+//				panel.GetComponent<Image> ().color = bad;
 				focusScript.inFocus = false;
 				chargeTimer = 0;
 				checkRotation ();
@@ -90,6 +90,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 	}
 
 	public void checkMovement(){
+		if (livesLeft <= 0) {
+			gameObject.SetActive(false);
+			arrow.SetActive(false);
+		}
 		if (stunned) {
 			Debug.Log("stunned");
 			waitTimer -= Time.deltaTime;
@@ -112,14 +116,17 @@ public class PlayerManager : Photon.MonoBehaviour {
 					if(livesLeft > 0){
 						stunned = false;
 					}
-					else{
-						gameObject.SetActive(false);
-						arrow.SetActive(false);
-					}
+//					else{
+//						gameObject.SetActive(false);
+//						arrow.SetActive(false);
+//					}
 				}
 			}
 		} else {
 			if(invincible){
+				if(!shield.GetActive()){
+					shield.SetActive(true);
+				}
 				invincibilityTimer -= Time.deltaTime;
 				if(invincibilityTimer <= 0){
 					invincible = false;
@@ -200,6 +207,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 			Vector3 tempcolor = new Vector3(c.r, c.g, c.b);
 			stream.SendNext (tempcolor);
 			stream.SendNext (c.a);
+			stream.SendNext (invincible);
+			stream.SendNext (livesLeft);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
@@ -207,6 +216,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
 			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().material.color = new Color(tempcolor.x,tempcolor.y,tempcolor.z,(float)stream.ReceiveNext ());
+			invincible = (bool)stream.ReceiveNext();
+			livesLeft = (int)stream.ReceiveNext();
 		}
 	}
 
