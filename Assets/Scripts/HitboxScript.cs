@@ -7,10 +7,10 @@ public class HitboxScript : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (photonView.isMine) {
+//		if (photonView.isMine) {
 			player = transform.parent.gameObject;
 			playerLance = transform.parent.gameObject.transform.FindChild ("Lance").gameObject;
-		}
+//		}
 	}
 	
 	// Update is called once per frame
@@ -19,13 +19,13 @@ public class HitboxScript : Photon.MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (photonView.isMine) {
+//		if (photonView.isMine) {
 			GameObject obj = collider.gameObject;
 			if (obj != playerLance && obj.tag == "Weapon" 
-			    && obj.transform.parent.rigidbody.velocity.magnitude > 0.5
+//			    && obj.transform.parent.rigidbody.velocity.magnitude > 0.5
 			    && !player.GetComponent<PlayerManager>().invincible) {
 				player.GetComponent<PlayerManager> ().hit ();
 			}
-		}
+//		}
 	}
 }

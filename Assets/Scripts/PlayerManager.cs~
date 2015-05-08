@@ -43,7 +43,12 @@ public class PlayerManager : Photon.MonoBehaviour {
 		animController.SetBool ("Running", false);
 		animController.SetBool ("Hit", false);
 		arrow = transform.FindChild ("arrow").gameObject;
-		arrow.transform.parent = null;
+		if (!photonView.isMine) {
+			arrow.SetActive(false);
+			Destroy (arrow);
+		} else {
+			arrow.transform.parent = null;
+		}
 		horseColor = GetComponentInChildren<Renderer> ().material.color;
 		focusScript = GetComponent<ChargeBarScript> ();
 	}
@@ -64,6 +69,11 @@ public class PlayerManager : Photon.MonoBehaviour {
 				focusScript.inFocus = false;
 				chargeTimer = 0;
 				checkRotation ();
+			}
+		} else {
+			if(arrow){
+				arrow.SetActive(false);
+				Destroy(arrow);
 			}
 		}
 	}
@@ -217,6 +227,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().material.color = new Color(tempcolor.x,tempcolor.y,tempcolor.z,(float)stream.ReceiveNext ());
 			invincible = (bool)stream.ReceiveNext();
+//			shield.SetActive(invincible);
 			livesLeft = (int)stream.ReceiveNext();
 		}
 	}
