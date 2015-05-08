@@ -25,6 +25,9 @@ public class HitboxScript : Photon.MonoBehaviour {
 //			    && obj.transform.parent.rigidbody.velocity.magnitude > 0.5
 			    && !player.GetComponent<PlayerManager>().invincible) {
 				player.GetComponent<PlayerManager> ().hit ();
+
+				// add score upon hit
+				obj.transform.GetComponentInParent<PlayerManager>().score += 1;
 			}
 //		}
 	}

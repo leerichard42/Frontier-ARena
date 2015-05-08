@@ -10,6 +10,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	Color bad = new Color(77f/55f,77f/255f,77f/255f,100f/255f);
 
 	public int playerID;
+	public int score = 0;
 	public float waitTimer;
 	public bool stunned = false;
 	public float stunTime = 0.5f;
@@ -219,6 +220,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (c.a);
 			stream.SendNext (invincible);
 			stream.SendNext (livesLeft);
+			stream.SendNext (score);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
@@ -229,6 +231,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 			invincible = (bool)stream.ReceiveNext();
 //			shield.SetActive(invincible);
 			livesLeft = (int)stream.ReceiveNext();
+			score = (int)stream.ReceiveNext();
 		}
 	}
 
