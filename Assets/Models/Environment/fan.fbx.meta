@@ -82,11 +82,85 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube1/transform5
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube2/transform10
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: pCube3/transform8
+        weight: 1
+      - path: pCube4
+        weight: 1
+      - path: pCube4/transform6
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCylinder1
+        weight: 1
+      - path: pCylinder1/transform7
+        weight: 1
+      - path: pCylinder2
+        weight: 1
+      - path: pCylinder2/transform9
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      - path: pPlane1/transform3
+        weight: 1
+      - path: pPlane2
+        weight: 1
+      - path: pPlane2/transform4
+        weight: 1
+      - path: pPlane3
+        weight: 1
+      - path: pPlane3/transform1
+        weight: 1
+      - path: pPlane4
+        weight: 1
+      - path: pPlane4/transform2
+        weight: 1
+      - path: pSphere1
+        weight: 1
+      - path: pSphere2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

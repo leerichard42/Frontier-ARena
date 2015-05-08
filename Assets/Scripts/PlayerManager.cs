@@ -51,7 +51,6 @@ public class PlayerManager : Photon.MonoBehaviour {
 		animController = GetComponent<Animator> ();
 		animController.SetBool ("Charging", false);
 		animController.SetBool ("Running", false);
-		animController.SetBool ("Hit", false);
 		arrow = transform.FindChild ("arrow").gameObject;
 		if (!photonView.isMine) {
 			arrow.SetActive(false);
@@ -190,7 +189,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public void hit(){
 		if (!invincible && !stunned) {
 			livesLeft--;
-			animController.SetBool("Hit", true);
+			animController.SetTrigger("Hit");
 			blinksLeft = 3;
 			waitTimer = stunTime;
 			stunned = true;
