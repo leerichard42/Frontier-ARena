@@ -210,8 +210,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 
 	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
 		if (stream.isWriting) {
-			stream.SendNext (rigidbody.position);
-			stream.SendNext (rigidbody.rotation);
+			stream.SendNext (transform.position);
+			stream.SendNext (transform.rotation);
 			stream.SendNext(playerID);
 			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
 			Color c = GetComponentInChildren<Renderer>().material.color;
@@ -222,14 +222,13 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (livesLeft);
 			stream.SendNext (score);
 		} else {
-			rigidbody.position = (Vector3)stream.ReceiveNext ();
-			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
+			transform.position = (Vector3)stream.ReceiveNext ();
+			transform.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
 			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().material.color = new Color(tempcolor.x,tempcolor.y,tempcolor.z,(float)stream.ReceiveNext ());
 			invincible = (bool)stream.ReceiveNext();
-//			shield.SetActive(invincible);
 			livesLeft = (int)stream.ReceiveNext();
 			score = (int)stream.ReceiveNext();
 		}
