@@ -23,6 +23,7 @@ public class PlayerManager : Photon.MonoBehaviour {
 	public Animator animController;
 	public GameObject arrow;
 	public Color horseColor;
+	public ChargeBarScript focusScript;
 
 	void Start () {
 		GameObject gameManager = GameObject.FindGameObjectWithTag ("GameManager");
@@ -33,8 +34,8 @@ public class PlayerManager : Photon.MonoBehaviour {
 		cam = GameObject.Find("Camera").GetComponent<Camera>();
 		chargeTimer = 0;
 		waitTimer = 0;
-		panel = GameObject.FindGameObjectWithTag("MainPanel");
-		panel.GetComponent<Image>().color = bad;
+//		panel = GameObject.FindGameObjectWithTag("MainPanel");
+//		panel.GetComponent<Image>().color = bad;
 		shield = transform.FindChild ("Shield").gameObject;
 		shield.SetActive (false);
 		animController = GetComponent<Animator> ();
@@ -42,8 +43,14 @@ public class PlayerManager : Photon.MonoBehaviour {
 		animController.SetBool ("Running", false);
 		animController.SetBool ("Hit", false);
 		arrow = transform.FindChild ("arrow").gameObject;
-		arrow.transform.parent = null;
+		if (!photonView.isMine) {
+			arrow.SetActive(false);
+			Destroy (arrow);
+		} else {
+			arrow.transform.parent = null;
+		}
 		horseColor = GetComponentInChildren<Renderer> ().material.color;
+		focusScript = GetComponent<ChargeBarScript> ();
 	}
 	
 	// Update is called once per frame
@@ -55,11 +62,18 @@ public class PlayerManager : Photon.MonoBehaviour {
 			if (screenPos.x < cam.pixelWidth * .75f && screenPos.x > cam.pixelWidth * .25f
 				&& screenPos.y < cam.pixelHeight && screenPos.y > 0f) {
 				checkMovement ();
-				panel.GetComponent<Image> ().color = good;
+//				panel.GetComponent<Image> ().color = good;
+				focusScript.inFocus = true;
 			} else {
-				panel.GetComponent<Image> ().color = bad;
+//				panel.GetComponent<Image> ().color = bad;
+				focusScript.inFocus = false;
 				chargeTimer = 0;
 				checkRotation ();
+			}
+		} else {
+			if(arrow){
+				arrow.SetActive(false);
+				Destroy(arrow);
 			}
 		}
 	}
@@ -86,6 +100,10 @@ public class PlayerManager : Photon.MonoBehaviour {
 	}
 
 	public void checkMovement(){
+		if (livesLeft <= 0) {
+			gameObject.SetActive(false);
+			arrow.SetActive(false);
+		}
 		if (stunned) {
 			Debug.Log("stunned");
 			waitTimer -= Time.deltaTime;
@@ -108,14 +126,17 @@ public class PlayerManager : Photon.MonoBehaviour {
 					if(livesLeft > 0){
 						stunned = false;
 					}
-					else{
-						gameObject.SetActive(false);
-						arrow.SetActive(false);
-					}
+//					else{
+//						gameObject.SetActive(false);
+//						arrow.SetActive(false);
+//					}
 				}
 			}
 		} else {
 			if(invincible){
+				if(!shield.GetActive()){
+					shield.SetActive(true);
+				}
 				invincibilityTimer -= Time.deltaTime;
 				if(invincibilityTimer <= 0){
 					invincible = false;
@@ -191,16 +212,23 @@ public class PlayerManager : Photon.MonoBehaviour {
 			stream.SendNext (rigidbody.position);
 			stream.SendNext (rigidbody.rotation);
 			stream.SendNext(playerID);
+			stream.SendNext (GetComponentInChildren<Renderer>().enabled);
 			Color c = GetComponentInChildren<Renderer>().material.color;
 			Vector3 tempcolor = new Vector3(c.r, c.g, c.b);
 			stream.SendNext (tempcolor);
 			stream.SendNext (c.a);
+			stream.SendNext (invincible);
+			stream.SendNext (livesLeft);
 		} else {
 			rigidbody.position = (Vector3)stream.ReceiveNext ();
 			rigidbody.rotation = (Quaternion)stream.ReceiveNext();
 			playerID = (int)stream.ReceiveNext();
+			GetComponentInChildren<Renderer>().enabled = (bool)stream.ReceiveNext();
 			Vector3 tempcolor = (Vector3)stream.ReceiveNext();
 			GetComponentInChildren<Renderer>().material.color = new Color(tempcolor.x,tempcolor.y,tempcolor.z,(float)stream.ReceiveNext ());
+			invincible = (bool)stream.ReceiveNext();
+//			shield.SetActive(invincible);
+			livesLeft = (int)stream.ReceiveNext();
 		}
 	}
 

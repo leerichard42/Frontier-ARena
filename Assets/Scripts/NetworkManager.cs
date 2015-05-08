@@ -74,6 +74,12 @@ public class NetworkManager : Photon.MonoBehaviour {
 			if(GUI.Button (new Rect(900, 100, 250, 100), "Squiggly")){
 				map = 3;
 			}
+			if(GUI.Button (new Rect(100, 500, 250, 100), "RoundTable")){
+				map = 4;
+			}
+			if(GUI.Button (new Rect(500, 500, 250, 100), "Tourney")){
+				map = 5;
+			}
 		}
 		else if(PhotonNetwork.isMasterClient && !inGame)
 		{

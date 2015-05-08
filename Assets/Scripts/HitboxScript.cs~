@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HitboxScript : MonoBehaviour {
+public class HitboxScript : Photon.MonoBehaviour {
 	GameObject player;
 	GameObject playerLance;
 
 	// Use this for initialization
 	void Start () {
-		player = transform.parent.gameObject;
-		playerLance = transform.parent.gameObject.transform.FindChild("Lance").gameObject;
+//		if (photonView.isMine) {
+			player = transform.parent.gameObject;
+			playerLance = transform.parent.gameObject.transform.FindChild ("Lance").gameObject;
+//		}
 	}
 	
 	// Update is called once per frame
@@ -17,9 +19,13 @@ public class HitboxScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		GameObject obj = collider.gameObject;
-		if (obj != playerLance && obj.tag == "Weapon"&& obj.transform.parent.rigidbody.velocity.magnitude > 0.5) {
-			player.GetComponent<PlayerManager>().hit();
-		}
+//		if (photonView.isMine) {
+			GameObject obj = collider.gameObject;
+			if (obj != playerLance && obj.tag == "Weapon" 
+//			    && obj.transform.parent.rigidbody.velocity.magnitude > 0.5
+			    && !player.GetComponent<PlayerManager>().invincible) {
+				player.GetComponent<PlayerManager> ().hit ();
+			}
+//		}
 	}
 }
