@@ -65,9 +65,9 @@ public class NetworkManager : Photon.MonoBehaviour {
 				}
 			}
 		} else if (PhotonNetwork.isMasterClient && !inGame && map < 0) {
-			if(GUI.Button (new Rect(100, 100, 250, 100), "Arena")){
+			/*if(GUI.Button (new Rect(100, 100, 250, 100), "Arena")){
 				map = 1;
-			}
+			}*/
 			if(GUI.Button (new Rect(500, 100, 250, 100), "Platformer")){
 				map = 2;
 			}
