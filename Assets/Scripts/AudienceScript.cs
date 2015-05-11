@@ -15,8 +15,5 @@ public class AudienceScript : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
