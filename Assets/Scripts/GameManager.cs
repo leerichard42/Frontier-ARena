@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameManager : Photon.MonoBehaviour {
 
@@ -45,22 +46,7 @@ public class GameManager : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-		foreach (GameObject obj in players){
-			PlayerManager script = obj.GetComponent<PlayerManager>();
-			if (script.playerID == 0){
-				score1.GetComponent<Text>().text = "1. Player 1: " + script.score;
-			}
-			else if (script.playerID == 1){
-				score1.GetComponent<Text>().text = "2. Player 2: " + script.score;
-			}
-			else if (script.playerID == 2){
-				score1.GetComponent<Text>().text = "3. Player 3: " + script.score;
-			}
-			else if (script.playerID == 3){
-				score1.GetComponent<Text>().text = "4. Player 4: " + script.score;
-			}
-		}
+		leaderBoard ();
 	}
 
 	[RPC] void SetParent(){
@@ -71,15 +57,40 @@ public class GameManager : Photon.MonoBehaviour {
 		}
 	}
 
-
-	int positionToSpawnPlayer(){
+	List<int> sortedListOfPlayerID(){
 		PhotonPlayer[] list = PhotonNetwork.playerList;
 		List<int> sorted_players = new List<int> ();;
 		foreach(PhotonPlayer player in list){
 			sorted_players.Add(player.ID);
 		}
 		sorted_players.Sort ();
+		return sorted_players;
+	}
+
+	int positionToSpawnPlayer(){
+		List<int> sorted_players = sortedListOfPlayerID ();
 		return sorted_players.IndexOf (PhotonNetwork.player.ID);
+	}
+
+	void leaderBoard(){
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		List<int> sorted_players = sortedListOfPlayerID ();
+		foreach (GameObject obj in players){
+			PlayerManager script = obj.GetComponent<PlayerManager>();
+			if (sorted_players.Count > 0 && script.playerID == sorted_players[0]){
+				score1.GetComponent<Text>().text = "Player " + sorted_players[0] + ": " + script.score;
+			}
+			else if (sorted_players.Count > 1 && script.playerID == sorted_players[1]){
+				score2.GetComponent<Text>().text = "Player " + sorted_players[1] + ": " + script.score;
+			}
+			else if (sorted_players.Count > 2 && script.playerID == sorted_players[2]){
+				score3.GetComponent<Text>().text = "Player " + sorted_players[2] + ": " + script.score;
+			}
+			else if (sorted_players.Count > 3 && script.playerID == sorted_players[3]){
+				score4.GetComponent<Text>().text = "Player " + sorted_players[3] + ": " + script.score;
+			}
+		}
+
 	}
 
 }
